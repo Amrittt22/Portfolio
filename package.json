@@ -5,7 +5,7 @@
   "description": "Amritanshu Singh — Full-Stack Developer & CS Student Portfolio",
   "scripts": {
     "dev": "npx serve .",
-    "build": "node --check script.js",
+    "build": "node build.js && node --check dist/script.js",
     "start": "npx serve ."
   },
   "keywords": [
