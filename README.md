@@ -37,8 +37,8 @@ The portfolio showcases four featured projects in exact priority order:
 
 ## ✦ Technical Skills & Stack
 
-- **Languages:** C++, Java, JavaScript (ES6+), TypeScript, HTML5, CSS3
-- **Frontend:** React, Next.js, Tailwind CSS, Responsive & Accessible UI
+- **Languages:** C++,JavaScript (ES6+), TypeScript, HTML5, CSS3
+- **Frontend:** React,Tailwind CSS, Responsive & Accessible UI
 - **Backend & Data:** Node.js, Express, Redis (In-Memory Sorted Sets & Caching), PostgreSQL, Supabase, Prisma ORM, RESTful APIs
 - **Tools & Workflow:** Git, GitHub, Docker, Postman, Vercel, Linux
 - **Problem Solving:** 500+ problems solved across LeetCode & GeeksforGeeks
