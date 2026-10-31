@@ -3,7 +3,7 @@ const path = require('path');
 
 const root = __dirname;
 const output = path.join(root, 'dist');
-const files = ['index.html', 'styles.css', 'theme.css', 'project-gallery.css', 'script.js'];
+const files = ['index.html', 'styles.css', 'script.js'];
 const directories = ['assets'];
 
 fs.rmSync(output, { recursive: true, force: true });

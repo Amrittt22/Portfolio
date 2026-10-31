@@ -8,17 +8,17 @@ A premium, editorial-minimalist personal developer portfolio designed and engine
 
 ## ✦ Visual System & Design Direction
 
-Inspired by high-end typography-first editorial web design (as featured in the Dymas Alfin portfolio reference):
+Rebuilt to be a faithful replica of the Dymas Alfin portfolio reference video:
 
-- **Atmospheric Palette:** Monochrome black (`#0A0A0C`), charcoal (`#121214`), clean white (`#FFFFFF`), muted gray (`#71717A`), and atmospheric cloudy backdrop.
-- **Hero Statement:** Oversized typography pairing outlined text (`AMRITANSHU`) with solid black (`SINGH`) wrapped around an authentic, grayscale editorial portrait.
-- **Watermark Backdrop:** Subtle giant outline typography (`ABOUT`, `SERVICE`, `PORTFOLIO`, `EXPERIENCE`) in each section layer.
-- **Restrained Interface:** Smooth floating pill navigation, live availability status beacon, thin dividing rules, and understated interactive controls.
+- **Cloud Window:** The whole site lives inside a floating white rounded card over an animated grayscale cloud backdrop.
+- **Hero Statement:** Oversized typography pairing outlined text (`AMRITANSHU`) with solid black (`SINGH`) wrapped around an AI-cutout grayscale portrait, with quick social pills on the right.
+- **Watermark Backdrop:** Subtle giant display typography (`PORTFOLIO`, `SERVICE`, `EXPERIENCE`) behind each section heading.
+- **Restrained Interface:** Floating pill navigation, live availability status beacon, and understated interactive controls.
 - **Interactive Layers:**
-  - Dynamic Services accordion with category tech chips.
-  - Interactive Project Detail Sheet with metadata specs and *(MORE WORK)* recommendations.
-  - Interactive Experience timeline with mouse-tracking floating preview cards.
-  - Live Bengaluru (IST) clock in the footer.
+  - Work grid with All / Full Stack / Systems & Tools filters and animated cards.
+  - Click any project to open a full project detail page (Back pill, tags, Service/Tools facts, Live Preview CTA, screenshot sets).
+  - Service rows that expand dark on hover with a description and floating tilted preview.
+  - Dark Experience section with a cursor-following tilted preview image on row hover.
 
 ---
 
