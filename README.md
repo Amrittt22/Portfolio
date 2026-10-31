@@ -52,7 +52,7 @@ The portfolio showcases four featured projects in exact priority order:
 git clone https://github.com/Amrittt22/portfolio.git
 cd portfolio
 
-# Run build check
+# Validate JavaScript syntax
 npm run build
 
 # Start local server

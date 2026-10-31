@@ -5,7 +5,7 @@
   "description": "Amritanshu Singh — Full-Stack Developer & CS Student Portfolio",
   "scripts": {
     "dev": "npx serve .",
-    "build": "node -e \"console.log('Build verification complete: All static assets, HTML, CSS, and JS verified.')\"",
+    "build": "node --check script.js",
     "start": "npx serve ."
   },
   "keywords": [
