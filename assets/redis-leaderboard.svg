@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c0e12" />
+      <stop offset="100%" stop-color="#14171f" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#dc2626" />
+      <stop offset="100%" stop-color="#ef4444" />
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#dc2626" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#dc2626" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bg)" rx="16" />
+  
+  <!-- Grid overlay -->
+  <g opacity="0.05" stroke="#ffffff" stroke-width="1">
+    <line x1="0" y1="100" x2="800" y2="100" />
+    <line x1="0" y1="200" x2="800" y2="200" />
+    <line x1="0" y1="300" x2="800" y2="300" />
+    <line x1="0" y1="400" x2="800" y2="400" />
+    <line x1="200" y1="0" x2="200" y2="500" />
+    <line x1="400" y1="0" x2="400" y2="500" />
+    <line x1="600" y1="0" x2="600" y2="500" />
+  </g>
+
+  <!-- Window Header -->
+  <rect x="30" y="30" width="740" height="45" rx="8" fill="#181b22" stroke="#262a34" stroke-width="1" />
+  <circle cx="55" cy="52" r="5" fill="#ef4444" />
+  <circle cx="72" cy="52" r="5" fill="#f59e0b" />
+  <circle cx="89" cy="52" r="5" fill="#10b981" />
+  <text x="120" y="56" fill="#8b949e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="500">live-leaderboard-redis · zset service · latency: 1.2ms</text>
+  
+  <!-- Redis Status Badge -->
+  <rect x="650" y="42" width="100" height="22" rx="11" fill="#dc2626" fill-opacity="0.15" stroke="#dc2626" stroke-width="1" />
+  <circle cx="663" cy="53" r="3" fill="#ef4444" />
+  <text x="673" y="57" fill="#ef4444" font-family="-apple-system, sans-serif" font-size="11" font-weight="600">REDIS 7.2</text>
+
+  <!-- Main Container -->
+  <!-- Left Side: Terminal / Commands -->
+  <g transform="translate(30, 95)">
+    <rect width="320" height="375" rx="10" fill="#111318" stroke="#222630" stroke-width="1" />
+    <text x="20" y="32" fill="#71717a" font-family="'DM Mono', monospace" font-size="11" letter-spacing="1">REAL-TIME REDIS OPS</text>
+    
+    <!-- Code block 1 -->
+    <rect x="15" y="48" width="290" height="85" rx="6" fill="#16181f" />
+    <text x="25" y="70" fill="#ef4444" font-family="'DM Mono', monospace" font-size="12">&gt; ZINCRBY leaderboard:posts</text>
+    <text x="40" y="90" fill="#a1a1aa" font-family="'DM Mono', monospace" font-size="12">15 &quot;post_9824&quot;</text>
+    <text x="25" y="112" fill="#10b981" font-family="'DM Mono', monospace" font-size="11">&quot;1420&quot; (Updated score)</text>
+
+    <!-- Code block 2 -->
+    <rect x="15" y="145" width="290" height="95" rx="6" fill="#16181f" />
+    <text x="25" y="168" fill="#ef4444" font-family="'DM Mono', monospace" font-size="12">&gt; ZREVRANGEBYSCORE</text>
+    <text x="40" y="188" fill="#a1a1aa" font-family="'DM Mono', monospace" font-size="12">leaderboard:posts +inf -inf</text>
+    <text x="40" y="206" fill="#71717a" font-family="'DM Mono', monospace" font-size="12">WITHSCORES LIMIT 0 5</text>
+    <text x="25" y="226" fill="#10b981" font-family="'DM Mono', monospace" font-size="11">Returned 5 ranked members</text>
+
+    <!-- Performance badge -->
+    <rect x="15" y="255" width="290" height="105" rx="6" fill="#16181f" />
+    <text x="25" y="280" fill="#fafafa" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">Throughput &amp; Scaling</text>
+    <text x="25" y="302" fill="#a1a1aa" font-family="-apple-system, sans-serif" font-size="12">O(log(N)) score update complexity</text>
+    <text x="25" y="322" fill="#a1a1aa" font-family="-apple-system, sans-serif" font-size="12">Atomic concurrent view tracking</text>
+    <text x="25" y="342" fill="#ef4444" font-family="-apple-system, sans-serif" font-size="12">Sub-millisecond sorted rankings</text>
+  </g>
+
+  <!-- Right Side: Live Visual Leaderboard -->
+  <g transform="translate(370, 95)">
+    <rect width="400" height="375" rx="10" fill="#111318" stroke="#222630" stroke-width="1" />
+    
+    <text x="25" y="32" fill="#fafafa" font-family="-apple-system, sans-serif" font-size="14" font-weight="600">Top Post Rankings (Live)</text>
+    <rect x="300" y="16" width="75" height="22" rx="4" fill="#222630" />
+    <text x="312" y="31" fill="#10b981" font-family="-apple-system, sans-serif" font-size="11" font-weight="600">● ACTIVE</text>
+
+    <!-- Row 1: Rank #1 Gold -->
+    <g transform="translate(20, 50)">
+      <rect width="360" height="52" rx="8" fill="#191c24" stroke="#fbbf24" stroke-width="1" stroke-opacity="0.3" />
+      <circle cx="28" cy="26" r="14" fill="#fbbf24" fill-opacity="0.15" />
+      <text x="24" y="30" fill="#fbbf24" font-family="-apple-system, sans-serif" font-size="12" font-weight="700">1</text>
+      <text x="56" y="25" fill="#fafafa" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">Distributed Systems Deep Dive</text>
+      <text x="56" y="41" fill="#71717a" font-family="-apple-system, sans-serif" font-size="11">post_id: 8192 · 14,820 views</text>
+      <rect x="290" y="16" width="55" height="20" rx="4" fill="#fbbf24" fill-opacity="0.1" />
+      <text x="298" y="30" fill="#fbbf24" font-family="'DM Mono', monospace" font-size="11" font-weight="600">+480/m</text>
+    </g>
+
+    <!-- Row 2: Rank #2 Silver -->
+    <g transform="translate(20, 110)">
+      <rect width="360" height="52" rx="8" fill="#191c24" stroke="#94a3b8" stroke-width="1" stroke-opacity="0.2" />
+      <circle cx="28" cy="26" r="14" fill="#94a3b8" fill-opacity="0.15" />
+      <text x="23" y="30" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12" font-weight="700">2</text>
+      <text x="56" y="25" fill="#fafafa" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">Building High-Performance APIs</text>
+      <text x="56" y="41" fill="#71717a" font-family="-apple-system, sans-serif" font-size="11">post_id: 5412 · 11,240 views</text>
+      <rect x="290" y="16" width="55" height="20" rx="4" fill="#94a3b8" fill-opacity="0.1" />
+      <text x="298" y="30" fill="#94a3b8" font-family="'DM Mono', monospace" font-size="11" font-weight="600">+312/m</text>
+    </g>
+
+    <!-- Row 3: Rank #3 Bronze -->
+    <g transform="translate(20, 170)">
+      <rect width="360" height="52" rx="8" fill="#191c24" stroke="#d97706" stroke-width="1" stroke-opacity="0.2" />
+      <circle cx="28" cy="26" r="14" fill="#d97706" fill-opacity="0.15" />
+      <text x="23" y="30" fill="#d97706" font-family="-apple-system, sans-serif" font-size="12" font-weight="700">3</text>
+      <text x="56" y="25" fill="#fafafa" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">Redis Data Structures in Go &amp; Node</text>
+      <text x="56" y="41" fill="#71717a" font-family="-apple-system, sans-serif" font-size="11">post_id: 3109 · 9,650 views</text>
+      <rect x="290" y="16" width="55" height="20" rx="4" fill="#d97706" fill-opacity="0.1" />
+      <text x="298" y="30" fill="#d97706" font-family="'DM Mono', monospace" font-size="11" font-weight="600">+198/m</text>
+    </g>
+
+    <!-- Row 4: Rank #4 -->
+    <g transform="translate(20, 230)">
+      <rect width="360" height="52" rx="8" fill="#16181f" stroke="#262a34" stroke-width="1" />
+      <circle cx="28" cy="26" r="14" fill="#262a34" />
+      <text x="23" y="30" fill="#71717a" font-family="-apple-system, sans-serif" font-size="12" font-weight="700">4</text>
+      <text x="56" y="25" fill="#e4e4e7" font-family="-apple-system, sans-serif" font-size="13" font-weight="500">Fast In-Memory Cache Invalidation</text>
+      <text x="56" y="41" fill="#71717a" font-family="-apple-system, sans-serif" font-size="11">post_id: 1982 · 7,120 views</text>
+      <rect x="290" y="16" width="55" height="20" rx="4" fill="#222630" />
+      <text x="298" y="30" fill="#a1a1aa" font-family="'DM Mono', monospace" font-size="11" font-weight="600">+140/m</text>
+    </g>
+
+    <!-- API Stats Footer -->
+    <g transform="translate(20, 295)">
+      <rect width="360" height="60" rx="6" fill="#16181f" stroke="#222630" stroke-width="1" />
+      <text x="20" y="26" fill="#71717a" font-family="-apple-system, sans-serif" font-size="11">AVG LATENCY</text>
+      <text x="20" y="46" fill="#10b981" font-family="'DM Mono', monospace" font-size="15" font-weight="600">0.84 ms</text>
+      
+      <text x="140" y="26" fill="#71717a" font-family="-apple-system, sans-serif" font-size="11">OPS / SEC</text>
+      <text x="140" y="46" fill="#fafafa" font-family="'DM Mono', monospace" font-size="15" font-weight="600">24,500/s</text>
+      
+      <text x="260" y="26" fill="#71717a" font-family="-apple-system, sans-serif" font-size="11">MEMORY USAGE</text>
+      <text x="260" y="46" fill="#38bdf8" font-family="'DM Mono', monospace" font-size="15" font-weight="600">4.2 MB</text>
+    </g>
+  </g>
+</svg>

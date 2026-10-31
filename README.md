@@ -1,89 +1,75 @@
-# Personal Portfolio
+# Amritanshu Singh — Personal Developer Portfolio
 
-A modern personal portfolio website built to showcase my projects, technical skills, coding journey, and experience as a Computer Science student and aspiring Software Engineer.
+A premium, editorial-minimalist personal developer portfolio designed and engineered to showcase full-stack projects, distributed systems architecture, algorithmic problem-solving, and software engineering experience.
 
-## Preview
+**Live Deployment:** [https://myportfolio-amrit7.vercel.app/](https://myportfolio-amrit7.vercel.app/)
 
-[https://myportfolio-amrit7.vercel.app/](https://myportfolio-amrit7.vercel.app/)
+---
 
-## About
+## ✦ Visual System & Design Direction
 
-This portfolio is built with modern web technologies and focuses on a clean, responsive, and interactive user experience.
+Inspired by high-end typography-first editorial web design (as featured in the Dymas Alfin portfolio reference):
 
-It includes sections for:
+- **Atmospheric Palette:** Monochrome black (`#0A0A0C`), charcoal (`#121214`), clean white (`#FFFFFF`), muted gray (`#71717A`), and atmospheric cloudy backdrop.
+- **Hero Statement:** Oversized typography pairing outlined text (`AMRITANSHU`) with solid black (`SINGH`) wrapped around an authentic, grayscale editorial portrait.
+- **Watermark Backdrop:** Subtle giant outline typography (`ABOUT`, `SERVICE`, `PORTFOLIO`, `EXPERIENCE`) in each section layer.
+- **Restrained Interface:** Smooth floating pill navigation, live availability status beacon, thin dividing rules, and understated interactive controls.
+- **Interactive Layers:**
+  - Dynamic Services accordion with category tech chips.
+  - Interactive Project Detail Sheet with metadata specs and *(MORE WORK)* recommendations.
+  - Interactive Experience timeline with mouse-tracking floating preview cards.
+  - Live Bengaluru (IST) clock in the footer.
 
-- About Me
-- Technical Skills
-- Projects
-- Experience
-- Achievements
-- Coding Profiles
-- Resume
-- Contact
+---
 
-## Getting Started
+## ✦ Featured Projects
 
-```bash
-git clone https://github.com/Amrittt22/Portfolio.git
-cd Portfolio
+The portfolio showcases four featured projects in exact priority order:
 
-npm install
-npm run dev
-```
+| # | Project | Focus | Status / Links |
+|---|---|---|---|
+| **01** | **DayFlow** | Enterprise HR Management Platform | **Live Platform** · [Open App](https://dayflowhrm-eq7f4z79.manus.space/app) |
+| **02** | **DevFlow** | AI-Powered Project Management & GitHub Sync | **Coming Soon** · In Active Development |
+| **03** | **Live Leaderboard Using Redis** | High-Throughput Real-Time Score Ranking API | **Open Source** · [GitHub Repository](https://github.com/Amrittt22/live-leaderboard-using-redis) |
+| **04** | **Zonify Extension** | Chrome Focus Timer & Distraction Blocker (MV3) | **Chrome Extension** · [GitHub Repository](https://github.com/Amrittt22/Zonify-Extension) |
 
-Open [http://localhost:3000](http://localhost:3000).
+---
 
-## Make It Yours
+## ✦ Technical Skills & Stack
 
-Most of the portfolio content can be updated directly from the project configuration and component files.
+- **Languages:** C++, Java, JavaScript (ES6+), TypeScript, HTML5, CSS3
+- **Frontend:** React, Next.js, Tailwind CSS, Responsive & Accessible UI
+- **Backend & Data:** Node.js, Express, Redis (In-Memory Sorted Sets & Caching), PostgreSQL, Supabase, Prisma ORM, RESTful APIs
+- **Tools & Workflow:** Git, GitHub, Docker, Postman, Vercel, Linux
+- **Problem Solving:** 500+ problems solved across LeetCode & GeeksforGeeks
 
-| **Section** | **What it holds** |
-|---|---|
-| `Hero` | Name, title, introduction, and social links |
-| `About` | Personal introduction and background |
-| `Skills` | Technical skills and technologies |
-| `Projects` | Featured projects and project details |
-| `Experience` | Education, experience, and timeline |
-| `Achievements` | Certifications and achievements |
-| `Contact` | Contact information and social links |
-| `Resume` | Resume PDF and download link |
+---
 
-## Projects
-
-### JobConnect
-
-A full-stack job recruitment platform with authentication, job management, company workflows, and REST APIs.
-
-**Tech:** React, Node.js, Express, Supabase, Redux Toolkit
-
-### DevFlow
-
-A backend-focused developer platform built around scalable workflows, job processing, and modern backend architecture.
-
-**Tech:** TypeScript, Node.js, PostgreSQL, Prisma, Redis, Docker
-
-## Tech Stack
-
-React · TypeScript · Tailwind CSS · Node.js · Express · PostgreSQL · Supabase · Prisma · Redis
-
-## Development
+## ✦ Local Development & Build
 
 ```bash
-npm run dev      # start development server
-npm run build    # create production build
-npm run start    # start production server
+# Clone the repository
+git clone https://github.com/Amrittt22/portfolio.git
+cd portfolio
+
+# Run build check
+npm run build
+
+# Start local server
+npm run start
 ```
 
-## Deployment
+---
 
-The portfolio is deployed using **Vercel**.
+## ✦ Connect
 
-## Connect
+- **GitHub:** [https://github.com/Amrittt22](https://github.com/Amrittt22)
+- **LinkedIn:** [https://www.linkedin.com/in/amritanshu-kumar-singh-203254333/](https://www.linkedin.com/in/amritanshu-kumar-singh-203254333/)
+- **LeetCode:** [https://leetcode.com/u/amrittt_22](https://leetcode.com/u/amrittt_22)
+- **Email:** [amritanshusingh2205@gmail.com](mailto:amritanshusingh2205@gmail.com)
 
-- **GitHub:** https://github.com/Amrittt22
-- **LinkedIn:** https://www.linkedin.com/in/amritanshu-kumar-singh-203254333/
-- **Portfolio:** https://myportfolio-amrit7.vercel.app/
+---
 
-## License
+## ✦ License
 
-This project is open source and available under the MIT License.
+Open-source and available under the [MIT License](LICENSE).

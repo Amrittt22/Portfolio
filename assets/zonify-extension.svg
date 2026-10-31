@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="zonifyBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090a0f" />
+      <stop offset="100%" stop-color="#12141c" />
+    </linearGradient>
+    <linearGradient id="purpleRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#zonifyBg)" rx="16" />
+
+  <!-- Subtle ambient glow -->
+  <circle cx="400" cy="240" r="180" fill="#6366f1" fill-opacity="0.08" />
+
+  <!-- Chrome Extension Popup Frame -->
+  <g transform="translate(225, 40)">
+    <!-- Browser Window Card -->
+    <rect width="350" height="420" rx="16" fill="#151720" stroke="#252936" stroke-width="1.5" />
+    
+    <!-- Extension Top Header -->
+    <g transform="translate(20, 20)">
+      <!-- Zonify Icon -->
+      <rect width="32" height="32" rx="8" fill="#6366f1" />
+      <path d="M11 11h10l-8 10h8" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+      <text x="42" y="21" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="15" font-weight="700">Zonify</text>
+      
+      <!-- Status pill -->
+      <rect x="225" y="4" width="85" height="24" rx="12" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-width="1" />
+      <circle cx="237" cy="16" r="3.5" fill="#10b981" />
+      <text x="246" y="20" fill="#10b981" font-family="-apple-system, sans-serif" font-size="11" font-weight="600">IN ZONE</text>
+    </g>
+
+    <!-- Pomodoro Timer Circle -->
+    <g transform="translate(175, 175)">
+      <!-- Background track -->
+      <circle cx="0" cy="0" r="75" fill="none" stroke="#202430" stroke-width="8" />
+      <!-- Progress arc (approx 75% complete) -->
+      <circle cx="0" cy="0" r="75" fill="none" stroke="url(#purpleRing)" stroke-width="8" stroke-dasharray="471" stroke-dashoffset="118" stroke-linecap="round" transform="rotate(-90)" />
+      
+      <!-- Timer Text -->
+      <text x="0" y="8" text-anchor="middle" fill="#ffffff" font-family="'DM Mono', monospace" font-size="36" font-weight="700">25:00</text>
+      <text x="0" y="30" text-anchor="middle" fill="#818cf8" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" letter-spacing="1.5">DEEP FOCUS</text>
+    </g>
+
+    <!-- Controls Row -->
+    <g transform="translate(60, 280)">
+      <rect x="0" y="0" width="105" height="36" rx="18" fill="#6366f1" />
+      <text x="52" y="23" text-anchor="middle" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">Pause</text>
+      
+      <rect x="125" y="0" width="105" height="36" rx="18" fill="#202430" stroke="#2e3444" stroke-width="1" />
+      <text x="177" y="23" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="13" font-weight="500">Reset</text>
+    </g>
+
+    <!-- Distraction Blocker Status -->
+    <g transform="translate(20, 335)">
+      <rect width="310" height="65" rx="10" fill="#1a1d28" stroke="#262b3a" stroke-width="1" />
+      <circle cx="25" cy="32" r="12" fill="#ef4444" fill-opacity="0.15" />
+      <path d="M21 28l8 8m0-8l-8 8" stroke="#ef4444" stroke-width="2" stroke-linecap="round" />
+      <text x="48" y="28" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">Distraction Blocker</text>
+      <text x="48" y="45" fill="#71717a" font-family="-apple-system, sans-serif" font-size="11">Blocked 18 attempts · 6 sites protected</text>
+      <rect x="250" y="22" width="45" height="22" rx="11" fill="#6366f1" />
+      <circle cx="282" cy="33" r="8" fill="#ffffff" />
+    </g>
+  </g>
+
+  <!-- Left Side Badges -->
+  <g transform="translate(45, 120)">
+    <rect width="145" height="70" rx="10" fill="#14161f" stroke="#252936" stroke-width="1" />
+    <text x="18" y="28" fill="#71717a" font-family="-apple-system, sans-serif" font-size="11">DAILY FOCUS</text>
+    <text x="18" y="52" fill="#ffffff" font-family="'DM Mono', monospace" font-size="20" font-weight="700">4h 15m</text>
+  </g>
+
+  <g transform="translate(45, 210)">
+    <rect width="145" height="70" rx="10" fill="#14161f" stroke="#252936" stroke-width="1" />
+    <text x="18" y="28" fill="#71717a" font-family="-apple-system, sans-serif" font-size="11">SESSIONS</text>
+    <text x="18" y="52" fill="#10b981" font-family="'DM Mono', monospace" font-size="20" font-weight="700">8 / 8 Done</text>
+  </g>
+
+  <!-- Right Side Badges -->
+  <g transform="translate(610, 120)">
+    <rect width="145" height="70" rx="10" fill="#14161f" stroke="#252936" stroke-width="1" />
+    <text x="18" y="28" fill="#71717a" font-family="-apple-system, sans-serif" font-size="11">MANIFEST V3</text>
+    <text x="18" y="52" fill="#ffffff" font-family="'DM Mono', monospace" font-size="15" font-weight="600">Service Worker</text>
+  </g>
+
+  <g transform="translate(610, 210)">
+    <rect width="145" height="70" rx="10" fill="#14161f" stroke="#252936" stroke-width="1" />
+    <text x="18" y="28" fill="#71717a" font-family="-apple-system, sans-serif" font-size="11">PERMISSIONS</text>
+    <text x="18" y="52" fill="#a78bfa" font-family="'DM Mono', monospace" font-size="14" font-weight="600">storage · alarms</text>
+  </g>
+</svg>

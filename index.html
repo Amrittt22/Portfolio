@@ -3,131 +3,884 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f6f0cf" />
-    <meta name="description" content="Amritanshu Kumar Singh — computer science student building full-stack applications and exploring AI-powered software." />
-    <title>Amritanshu Kumar Singh — Full-Stack Developer</title>
+    <meta name="theme-color" content="#121214" />
+    <meta name="description" content="Amritanshu Singh — Computer Science student and full-stack developer based in Bengaluru. Building robust web apps, distributed systems, and modern digital experiences." />
+    <title>Amritanshu Singh — Full-Stack Developer & CS Student</title>
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+    
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="project-gallery.css" />
-    <link rel="stylesheet" href="theme.css" />
   </head>
   <body>
-    <header class="hero" id="home">
-      <nav class="nav" aria-label="Main navigation">
-        <a class="brand" href="#home" aria-label="Amritanshu Kumar Singh, home"><span class="brand-mark">A<span>.</span></span><span class="brand-name">Amritanshu<br />Kumar Singh</span></a>
-        <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation"><span></span><span></span></button>
-        <div class="nav-links" id="nav-links">
-          <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a>
-          <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode"><span class="theme-icon" aria-hidden="true">◐</span><span class="theme-label">Dark mode</span></button>
-          <a class="nav-contact" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a>
-        </div>
-      </nav>
-      <div class="hero-inner">
-        <div class="hero-copy">
-          <p class="eyebrow"><span class="status-dot"></span> COMPUTER SCIENCE STUDENT <span class="eyebrow-line"></span> BENGALURU, INDIA</p>
-          <h1>Amritanshu<br /><span>Kumar Singh</span><span class="hero-period">.</span></h1>
-          <div class="hero-bottom">
-            <div><p class="hero-role">Full-Stack Developer <span>·</span> AI Enthusiast</p><p class="hero-intro">I’m a computer science student building full-stack applications and exploring how AI can make them more useful.</p>
-              <div class="hero-actions"><a class="button button-dark" href="#projects">View projects <span>↘</span></a><a class="text-link" href="#contact">Get in touch <span>↗</span></a></div>
+    <!-- Background atmospheric noise & cloud backdrop -->
+    <div class="ambient-backdrop" aria-hidden="true"></div>
+
+    <!-- Main Outer Card Wrapper -->
+    <div class="portfolio-card" id="top">
+      
+      <!-- Floating / Fixed Navigation Bar -->
+      <header class="site-header">
+        <nav class="site-nav" aria-label="Main Navigation">
+          <!-- Availability Pill -->
+          <div class="nav-status-pill">
+            <span class="status-indicator">
+              <span class="pulse-dot"></span>
+              <span class="solid-dot"></span>
+            </span>
+            <span class="status-text">Available for Opportunities</span>
+          </div>
+
+          <!-- Desktop Nav Links -->
+          <div class="nav-center-links">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#skills" class="nav-link">Service <span class="nav-count">(4)</span></a>
+            <a href="#work" class="nav-link">Work <span class="nav-count">(4)</span></a>
+            <a href="#experience" class="nav-link">Experience <span class="nav-count">(04)</span></a>
+            <a href="#contact" class="nav-link">Contact</a>
+          </div>
+
+          <!-- Right Action & Mobile Toggle -->
+          <div class="nav-actions">
+            <button class="btn-perspective-pill" id="perspectiveToggle" type="button" aria-label="Toggle 3D Video Perspective" title="Toggle 3D perspective camera angle like the demo video">
+              <span class="perspective-glyph">⬡</span>
+              <span class="perspective-text">3D Angle</span>
+            </button>
+            
+            <a href="#contact" class="btn-pill-dark nav-talk-btn">
+              <span>Let's Talk</span>
+              <span class="btn-arrow" aria-hidden="true">↗</span>
+            </a>
+            
+            <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+              <span class="hamburger-bar"></span>
+              <span class="hamburger-bar"></span>
+            </button>
+          </div>
+        </nav>
+
+        <!-- Mobile Drawer Menu -->
+        <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+          <div class="mobile-menu-inner">
+            <div class="mobile-nav-links">
+              <a href="#about" class="mobile-nav-link">About</a>
+              <a href="#skills" class="mobile-nav-link">Service <span>(4)</span></a>
+              <a href="#work" class="mobile-nav-link">Work <span>(4)</span></a>
+              <a href="#experience" class="mobile-nav-link">Experience <span>(04)</span></a>
+              <a href="#contact" class="mobile-nav-link">Contact</a>
+            </div>
+            <div class="mobile-menu-footer">
+              <a href="#contact" class="btn-pill-dark mobile-cta-btn">Let's Talk ↗</a>
+              <div class="mobile-socials">
+                <a href="https://github.com/Amrittt22" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/amritanshu-kumar-singh-203254333/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="mailto:amritanshusingh2205@gmail.com">Email</a>
+              </div>
             </div>
           </div>
         </div>
-        <div class="hero-meta"><span>SCROLL TO EXPLORE <span class="scroll-arrow">↓</span></span><span>BE · CSE — NMIT, 2028</span><span>BASED IN BENGALURU <span class="meta-cross">✳</span></span></div>
-      </div>
-      <span class="hero-decoration" aria-hidden="true">✳</span>
-    </header>
+      </header>
 
-    <main>
-      <section class="about section" id="about">
-        <div class="section-label"><span>01 / A LITTLE ABOUT ME</span><span class="label-rule"></span></div>
-        <div class="about-grid"><h2>Curious by nature.<br /><span>Builder by choice.</span></h2><div class="about-copy"><p class="lead">I’m a third-year B.E. Computer Science and Engineering student at <strong>Nitte Meenakshi Institute of Technology</strong> in Bengaluru, graduating in 2028.</p><p>I’m drawn to the parts of software that make an idea real: thoughtful interfaces, dependable backends, and practical applications of AI. I’m building my skills by making things, learning in public, and solving data structures and algorithms problems along the way.</p><a class="inline-link" href="#contact">A little more about what I do <span>↘</span></a></div></div>
-        <div class="education-card"><div class="edu-icon">↗</div><div><span class="card-kicker">CURRENTLY STUDYING</span><h3>B.E. Computer Science and Engineering</h3><p>Nitte Meenakshi Institute of Technology <span class="edu-dot">·</span> Bengaluru</p></div><div class="edu-year">EXPECTED GRADUATION<strong>2028</strong></div></div>
-      </section>
-
-      <section class="skills section" id="skills">
-        <div class="section-label"><span>02 / TOOLS IN MY KIT</span><span class="label-rule"></span></div>
-        <div class="section-heading"><h2>Skills &amp; <span>interests.</span></h2><p>A growing toolkit for turning ideas into useful software.</p></div>
-        <div class="skill-grid">
-          <article class="skill-card"><span class="skill-number">01</span><span class="skill-icon">⌘</span><h3>Full stack</h3><p>Building across the front end and back end.</p><div class="tags"><span>MERN stack</span><span>TypeScript</span></div></article>
-          <article class="skill-card"><span class="skill-number">02</span><span class="skill-icon">◈</span><h3>Data &amp; backend</h3><p>Tools for storing data and connecting services.</p><div class="tags"><span>PostgreSQL</span><span>Supabase</span><span>Redis</span><span>Prisma ORM</span><span>Postman</span></div></article>
-          <article class="skill-card"><span class="skill-number">03</span><span class="skill-icon">{ }</span><h3>Programming</h3><p>Writing code and strengthening problem-solving fundamentals.</p><div class="tags"><span>C++</span><span>Python</span><span>Data structures &amp; algorithms</span></div></article>
-          <article class="skill-card skill-card-yellow"><span class="skill-number">04</span><span class="skill-icon">✳</span><h3>Exploring now</h3><p>Growing into the next layer of application development.</p><div class="tags"><span>AI application development</span><span>Docker</span></div></article>
-        </div>
-      </section>
-
-      <section class="projects" id="projects">
-        <div class="projects-inner">
-          <div class="section-label section-label-light"><span>03 / THINGS I’M MAKING</span><span class="label-rule"></span></div>
-          <div class="projects-title"><div><p class="project-overline">IDEAS, IN PROGRESS</p><h2>Selected<br /><span>projects.</span></h2></div><p class="projects-intro">A few full-stack products I’m shaping, learning from, and bringing to life.</p><span class="projects-spark" aria-hidden="true">✳</span></div>
-          <div class="project-list">
-            <article class="project-card"><div class="project-art art-devflow" role="group" aria-label="DevFlow interface screenshots">
-              <div class="project-gallery" data-gallery role="region" aria-roledescription="carousel" aria-label="DevFlow screenshots">
-                <div class="gallery-viewport" tabindex="0" aria-label="DevFlow slides. Use the left and right arrow keys to browse.">
-                  <div class="gallery-track">
-                    <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="1 of 3"><img class="project-shot" src="assets/devflow-dashboard.png" alt="DevFlow dashboard with task metrics, sprint progress, and open tasks" loading="lazy" /></div>
-                    <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="2 of 3"><img class="project-shot" src="assets/devflow-board.png" alt="DevFlow Kanban board with tasks grouped by status" loading="lazy" /></div>
-                    <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="3 of 3"><img class="project-shot" src="assets/devflow-sprints.png" alt="DevFlow sprint planning view with progress and velocity charts" loading="lazy" /></div>
-                  </div>
-                </div>
-                <button class="gallery-control gallery-prev" type="button" aria-label="Previous DevFlow screenshot">‹</button>
-                <button class="gallery-control gallery-next" type="button" aria-label="Next DevFlow screenshot">›</button>
-                <div class="gallery-dots" aria-label="Choose DevFlow screenshot">
-                  <button class="gallery-dot" type="button" aria-label="Show DevFlow screenshot 1" aria-current="true"></button><button class="gallery-dot" type="button" aria-label="Show DevFlow screenshot 2"></button><button class="gallery-dot" type="button" aria-label="Show DevFlow screenshot 3"></button>
-                </div>
-                <span class="gallery-status" aria-live="polite">1 / 3</span>
-              </div>
-            </div><div class="project-info"><div class="project-meta"><span>PLATFORM · IN PROGRESS</span><span>2026 — NOW</span></div><h3>DevFlow <span>↗</span></h3><p>A developer collaboration and project management platform for projects, tasks, issues, sprints, team activity, and GitHub workflows.</p><div class="project-bottom"><div class="tags"><span>Full stack</span><span>Collaboration</span><span>GitHub workflows</span></div><span class="link-coming">LINKS COMING SOON</span></div></div></article>
-            <article class="project-card"><div class="project-art art-jobconnect" role="group" aria-label="Job Connect application screenshots">
-              <div class="project-gallery" data-gallery role="region" aria-roledescription="carousel" aria-label="Job Connect screenshots">
-                <div class="gallery-viewport" tabindex="0" aria-label="Job Connect slides. Use the left and right arrow keys to browse.">
-                  <div class="gallery-track">
-                    <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="1 of 3"><img class="project-shot" src="assets/jobconnect-home.png" alt="Job Connect home page with a job search hero and platform highlights" loading="lazy" /></div>
-                    <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="2 of 3"><img class="project-shot" src="assets/jobconnect-auth.png" alt="Job Connect login and account creation screens" loading="lazy" /></div>
-                    <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="3 of 3"><img class="project-shot" src="assets/jobconnect-dashboard.png" alt="Job Connect employer dashboard for posting a job" loading="lazy" /></div>
-                  </div>
-                </div>
-                <button class="gallery-control gallery-prev" type="button" aria-label="Previous Job Connect screenshot">‹</button>
-                <button class="gallery-control gallery-next" type="button" aria-label="Next Job Connect screenshot">›</button>
-                <div class="gallery-dots" aria-label="Choose Job Connect screenshot">
-                  <button class="gallery-dot" type="button" aria-label="Show Job Connect screenshot 1" aria-current="true"></button><button class="gallery-dot" type="button" aria-label="Show Job Connect screenshot 2"></button><button class="gallery-dot" type="button" aria-label="Show Job Connect screenshot 3"></button>
-                </div>
-                <span class="gallery-status" aria-live="polite">1 / 3</span>
-              </div>
-            </div><div class="project-info"><div class="project-meta"><span>RECRUITMENT · ALMOST COMPLETE</span><span>2026 — NOW</span></div><h3>Job Connect <span>↗</span></h3><p>A full-stack job recruitment platform with role-based authentication, job management, applications, and AI-powered features.</p><div class="project-bottom"><div class="tags"><span>Full stack</span><span>Recruitment</span><span>AI features</span></div><span class="link-coming">LINKS COMING SOON</span></div></div></article>
-            <article class="project-card"><div class="project-art art-dayflow" role="group" aria-label="DayFlow HR application screenshots">
-              <div class="project-gallery" data-gallery role="region" aria-roledescription="carousel" aria-label="DayFlow screenshots">
-                <div class="gallery-viewport" tabindex="0" aria-label="DayFlow slides. Use the left and right arrow keys to browse.">
-                  <div class="gallery-track">
-                    <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="1 of 3"><img class="project-shot" src="assets/dayflow-workspace.png" alt="DayFlow employee workspace showing attendance, payroll visibility, and leave requests" loading="lazy" /></div>
-                    <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="2 of 3"><img class="project-shot" src="assets/dayflow-bulletin.png" alt="DayFlow bulletin with team announcements" loading="lazy" /></div>
-                    <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="3 of 3"><img class="project-shot" src="assets/dayflow-actions.png" alt="DayFlow action center with assigned tasks and progress" loading="lazy" /></div>
-                  </div>
-                </div>
-                <button class="gallery-control gallery-prev" type="button" aria-label="Previous DayFlow screenshot">‹</button>
-                <button class="gallery-control gallery-next" type="button" aria-label="Next DayFlow screenshot">›</button>
-                <div class="gallery-dots" aria-label="Choose DayFlow screenshot">
-                  <button class="gallery-dot" type="button" aria-label="Show DayFlow screenshot 1" aria-current="true"></button><button class="gallery-dot" type="button" aria-label="Show DayFlow screenshot 2"></button><button class="gallery-dot" type="button" aria-label="Show DayFlow screenshot 3"></button>
-                </div>
-                <span class="gallery-status" aria-live="polite">1 / 3</span>
-              </div>
-            </div><div class="project-info"><div class="project-meta"><span>HUMAN RESOURCES · FULL STACK</span><span>2026</span></div><h3>DayFlow <span>↗</span></h3><p>A modern HRMS bringing employee management, attendance, leave, payroll, announcements, real-time chat, and Google Meet collaboration into one workspace.</p><div class="project-bottom"><div class="tags"><span>Full stack</span><span>HRMS</span><span>Real-time</span></div><span class="link-coming">LINKS COMING SOON</span></div></div></article>
+      <main>
+        <!-- ============================================================ -->
+        <!-- 01. HERO SECTION -->
+        <!-- ============================================================ -->
+        <section class="hero-section" id="hero">
+          <!-- Huge Oversized Typography Header -->
+          <div class="hero-typography-container" aria-label="Amritanshu Singh">
+            <div class="hero-title-row">
+              <span class="hero-name-outlined">AMRITANSHU</span>
+              <span class="hero-name-solid">SINGH</span>
+            </div>
           </div>
-          <div class="project-note"><span>✳</span> GOOD THINGS TAKE ITERATION. MORE SOON.</div>
+
+          <!-- Hero Main Stage with Centered Portrait and Sub-blocks -->
+          <div class="hero-stage">
+            <!-- Left Info Block -->
+            <div class="hero-left-block">
+              <div class="hero-badge-tag">Full-Stack Developer</div>
+              <h1 class="hero-role-title">Computer Science Student &amp; Software Builder</h1>
+              <p class="hero-role-desc">
+                Engineering scalable web applications, distributed backend services, and clean, high-performance digital products.
+              </p>
+              <div class="hero-cta-group">
+                <a href="#contact" class="btn-pill-dark hero-cta-btn">
+                  <span>Let's collaborate</span>
+                  <span class="btn-arrow" aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Center Portrait Frame -->
+            <div class="hero-portrait-wrapper">
+              <div class="portrait-backdrop-glow" aria-hidden="true"></div>
+              <div class="portrait-image-container">
+                <img 
+                  src="assets/portrait.jpg" 
+                  alt="Amritanshu Singh" 
+                  class="hero-portrait-img" 
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+            </div>
+
+            <!-- Right Social Links Block -->
+            <div class="hero-right-block">
+              <div class="social-pills-stack">
+                <a href="https://github.com/Amrittt22" target="_blank" rel="noopener noreferrer" class="social-pill-link">
+                  <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                  <span>GitHub</span>
+                  <span class="pill-arrow">↗</span>
+                </a>
+
+                <a href="https://www.linkedin.com/in/amritanshu-kumar-singh-203254333/" target="_blank" rel="noopener noreferrer" class="social-pill-link">
+                  <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                  <span>LinkedIn</span>
+                  <span class="pill-arrow">↗</span>
+                </a>
+
+                <a href="https://leetcode.com/u/amrittt_22" target="_blank" rel="noopener noreferrer" class="social-pill-link">
+                  <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                  </svg>
+                  <span>LeetCode</span>
+                  <span class="pill-arrow">↗</span>
+                </a>
+
+                <a href="mailto:amritanshusingh2205@gmail.com" class="social-pill-link">
+                  <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                  <span>Email</span>
+                  <span class="pill-arrow">↗</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- 02. ABOUT SECTION -->
+        <!-- ============================================================ -->
+        <section class="content-section about-section" id="about">
+          <div class="watermark-bg" aria-hidden="true">ABOUT</div>
+          
+          <div class="section-top-bar">
+            <span class="section-index-tag">(01 / ABOUT ME)</span>
+            <div class="section-divider-line"></div>
+          </div>
+
+          <div class="about-grid-layout">
+            <div class="about-lead-col">
+              <h2 class="about-lead-heading">
+                Driven by curiosity.<br />
+                <span class="text-highlight">Grounded in code.</span>
+              </h2>
+            </div>
+
+            <div class="about-text-col">
+              <p class="about-bio-text">
+                I am a Computer Science and Engineering student at <strong>Nitte Meenakshi Institute of Technology</strong>, Bengaluru (Class of 2028). I specialize in designing and engineering dependable full-stack web platforms, distributed backends, and algorithmic problem-solving.
+              </p>
+              <p class="about-bio-secondary">
+                My approach combines strong software fundamentals with modern architectural patterns: typed APIs, robust database schema design, high-throughput caching with Redis, and clean, responsive interfaces that deliver intuitive user experiences.
+              </p>
+
+              <!-- Quick Focus Pillars -->
+              <div class="about-pillars-grid">
+                <div class="pillar-item">
+                  <span class="pillar-num">01</span>
+                  <h3 class="pillar-title">Full-Stack Systems</h3>
+                  <p class="pillar-desc">Modern web apps with  React, Node.js, and TypeScript.</p>
+                </div>
+
+                <div class="pillar-item">
+                  <span class="pillar-num">02</span>
+                  <h3 class="pillar-title">Backend &amp; Data</h3>
+                  <p class="pillar-desc">PostgreSQL, Prisma, Supabase, and Redis sorted-set architectures.</p>
+                </div>
+
+                <div class="pillar-item">
+                  <span class="pillar-num">03</span>
+                  <h3 class="pillar-title">Algorithms &amp; DSA</h3>
+                  <p class="pillar-desc">500+ problems solved across LeetCode and GeeksforGeeks with C++ &amp; Java.</p>
+                </div>
+
+                <div class="pillar-item">
+                  <span class="pillar-num">04</span>
+                  <h3 class="pillar-title">Engineering Mindset</h3>
+                  <p class="pillar-desc">Clean modular code, Git workflows, performance, and attention to detail.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- 03. SERVICES / SKILLS SECTION -->
+        <!-- ============================================================ -->
+        <section class="content-section service-section" id="skills">
+          <div class="watermark-bg" aria-hidden="true">SERVICE</div>
+
+          <div class="section-top-bar">
+            <span class="section-index-tag">(02 / SERVICES &amp; EXPERTISE)</span>
+            <div class="section-divider-line"></div>
+          </div>
+
+          <div class="section-intro-header">
+            <h2 class="section-title">Technical Capabilities &amp; Skills</h2>
+            <p class="section-subtitle">
+              A disciplined, modern engineering toolkit for building reliable software from conception to production.
+            </p>
+          </div>
+
+          <!-- Interactive Accordion List (Matching Reference Video Service Layout) -->
+          <div class="service-accordion-list" role="region" aria-label="Services and Technical Expertise">
+            
+            <!-- Service Item 01 -->
+            <div class="service-row-item" data-accordion>
+              <button class="service-row-header" type="button" aria-expanded="false">
+                <div class="service-row-left">
+                  <span class="service-row-num">01</span>
+                  <h3 class="service-row-title">CORE PROGRAMMING &amp; DSA</h3>
+                </div>
+                <div class="service-row-right">
+                  <span class="service-tag-preview">C++ · Java · Algorithms</span>
+                  <span class="service-arrow-icon" aria-hidden="true">↗</span>
+                </div>
+              </button>
+              <div class="service-row-body">
+                <div class="service-body-inner">
+                  <p class="service-body-desc">
+                    Strong foundational problem solving in C++ and Java. Extensive practice in data structures, algorithms, asymptotic analysis, memory management, and clean algorithmic thinking.
+                  </p>
+                  <div class="tech-chip-group">
+                    <span class="tech-chip">C++</span>
+                    <span class="tech-chip">Java</span>
+                    <span class="tech-chip">Data Structures &amp; Algorithms</span>
+                    <span class="tech-chip">OOP</span>
+                    <span class="tech-chip">Problem Solving</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Service Item 02 -->
+            <div class="service-row-item is-open" data-accordion>
+              <button class="service-row-header" type="button" aria-expanded="true">
+                <div class="service-row-left">
+                  <span class="service-row-num">02</span>
+                  <h3 class="service-row-title">FRONTEND &amp; WEB APPLICATION DEVELOPMENT</h3>
+                </div>
+                <div class="service-row-right">
+                  <span class="service-tag-preview">React · TypeScript</span>
+                  <span class="service-arrow-icon" aria-hidden="true">↗</span>
+                </div>
+              </button>
+              <div class="service-row-body">
+                <div class="service-body-inner">
+                  <p class="service-body-desc">
+                    Designing responsive, accessible, high-performance user interfaces with React and TypeScript. Focused on semantic HTML, modern CSS and Tailwind CSS architecture, fluid layouts, and polished interaction design.
+                  </p>
+                  <div class="tech-chip-group">
+                    <span class="tech-chip">React</span>
+                    <span class="tech-chip">TypeScript</span>
+                    <span class="tech-chip">JavaScript (ES6+)</span>
+                    <span class="tech-chip">HTML5 &amp; CSS3</span>
+                    <span class="tech-chip">Tailwind CSS</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Service Item 03 -->
+            <div class="service-row-item" data-accordion>
+              <button class="service-row-header" type="button" aria-expanded="false">
+                <div class="service-row-left">
+                  <span class="service-row-num">03</span>
+                  <h3 class="service-row-title">BACKEND &amp; DISTRIBUTED DATA SYSTEMS</h3>
+                </div>
+                <div class="service-row-right">
+                  <span class="service-tag-preview">Node.js · Redis · PostgreSQL</span>
+                  <span class="service-arrow-icon" aria-hidden="true">↗</span>
+                </div>
+              </button>
+              <div class="service-row-body">
+                <div class="service-body-inner">
+                  <p class="service-body-desc">
+                    Architecting secure RESTful endpoints, relational schemas with PostgreSQL and Supabase, ORM mapping with Prisma, and low-latency in-memory data structures using Redis for real-time ranking and caching.
+                  </p>
+                  <div class="tech-chip-group">
+                    <span class="tech-chip">Node.js</span>
+                    <span class="tech-chip">Express</span>
+                    <span class="tech-chip">Redis</span>
+                    <span class="tech-chip">PostgreSQL</span>
+                    <span class="tech-chip">Prisma ORM</span>
+                    <span class="tech-chip">Supabase</span>
+                    <span class="tech-chip">REST APIs</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Service Item 04 -->
+            <div class="service-row-item" data-accordion>
+              <button class="service-row-header" type="button" aria-expanded="false">
+                <div class="service-row-left">
+                  <span class="service-row-num">04</span>
+                  <h3 class="service-row-title">DEVELOPER TOOLS, EXTENSIONS &amp; WORKFLOWS</h3>
+                </div>
+                <div class="service-row-right">
+                  <span class="service-tag-preview">Git · GitHub · Chrome APIs</span>
+                  <span class="service-arrow-icon" aria-hidden="true">↗</span>
+                </div>
+              </button>
+              <div class="service-row-body">
+                <div class="service-body-inner">
+                  <p class="service-body-desc">
+                    Version control mastery with Git and GitHub, building Chrome extensions with Manifest V3, API testing with Postman, containerization fundamentals, and automated Vercel continuous deployment workflows.
+                  </p>
+                  <div class="tech-chip-group">
+                    <span class="tech-chip">Git</span>
+                    <span class="tech-chip">GitHub</span>
+                    <span class="tech-chip">Chrome Extensions (MV3)</span>
+                    <span class="tech-chip">Postman</span>
+                    <span class="tech-chip">Vercel</span>
+                    <span class="tech-chip">Linux</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- 04. SELECTED WORK / PROJECTS SECTION -->
+        <!-- ============================================================ -->
+        <section class="content-section work-section" id="work">
+          <div class="watermark-bg" aria-hidden="true">PORTFOLIO</div>
+
+          <div class="section-top-bar">
+            <span class="section-index-tag">(03 / SELECTED WORK)</span>
+            <div class="section-divider-line"></div>
+          </div>
+
+          <!-- Filter Tabs & External Link Header -->
+          <div class="work-header-row">
+            <div class="work-filter-tabs" role="tablist" aria-label="Project category filters">
+              <button class="filter-tab-btn is-active" role="tab" aria-selected="true" data-filter="all">All (4)</button>
+              <button class="filter-tab-btn" role="tab" aria-selected="false" data-filter="fullstack">Full Stack</button>
+              <button class="filter-tab-btn" role="tab" aria-selected="false" data-filter="systems">Systems &amp; Tools</button>
+            </div>
+
+            <a href="https://github.com/Amrittt22" target="_blank" rel="noopener noreferrer" class="view-all-work-btn">
+              <span>View All Work on GitHub</span>
+              <span class="btn-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <!-- Projects Grid: Exactly 4 Projects in Specified Order -->
+          <div class="projects-editorial-grid">
+            
+            <!-- PROJECT 01: DayFlow -->
+            <article class="project-editorial-card" data-category="fullstack" data-project-id="dayflow">
+              <div class="project-media-viewport">
+                <div class="project-card-badge status-live">
+                  <span class="live-dot"></span>
+                  <span>LIVE / AVAILABLE</span>
+                </div>
+                <img 
+                  src="assets/dayflow-workspace.png" 
+                  alt="DayFlow HR Platform employee workspace dashboard" 
+                  class="project-media-img"
+                  loading="lazy"
+                />
+                <div class="project-card-overlay">
+                  <button class="btn-quick-view" type="button" data-open-project="dayflow">
+                    <span>Quick View</span>
+                    <span aria-hidden="true">↗</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="project-meta-details">
+                <div class="project-meta-top">
+                  <span class="project-sequence-num">PROJECT 01</span>
+                  <div class="project-tag-pills">
+                    <span class="tag-pill">Full Stack</span>
+                    <span class="tag-pill">HRMS</span>
+                  </div>
+                </div>
+                
+                <h3 class="project-editorial-title">DayFlow</h3>
+                <p class="project-editorial-desc">
+                  An HR management platform designed to streamline employee management and HR workflows.
+                </p>
+
+                <div class="project-action-row">
+                  <a href="https://dayflowhrm-eq7f4z79.manus.space/app" target="_blank" rel="noopener noreferrer" class="btn-pill-dark btn-project-action">
+                    <span>View Project</span>
+                    <span class="btn-arrow" aria-hidden="true">↗</span>
+                  </a>
+                  <button class="btn-pill-outline btn-detail-trigger" type="button" data-open-project="dayflow">
+                    <span>Details</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- PROJECT 02: DevFlow -->
+            <article class="project-editorial-card" data-category="fullstack" data-project-id="devflow">
+              <div class="project-media-viewport">
+                <div class="project-card-badge status-upcoming">
+                  <span class="upcoming-dot"></span>
+                  <span>COMING SOON</span>
+                </div>
+                <img 
+                  src="assets/devflow-dashboard.png" 
+                  alt="DevFlow AI-Powered project management dashboard" 
+                  class="project-media-img"
+                  loading="lazy"
+                />
+                <div class="project-card-overlay">
+                  <button class="btn-quick-view" type="button" data-open-project="devflow">
+                    <span>Quick View</span>
+                    <span aria-hidden="true">↗</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="project-meta-details">
+                <div class="project-meta-top">
+                  <span class="project-sequence-num">PROJECT 02</span>
+                  <div class="project-tag-pills">
+                    <span class="tag-pill">Collaboration</span>
+                    <span class="tag-pill">GitHub AI</span>
+                  </div>
+                </div>
+                
+                <h3 class="project-editorial-title">DevFlow</h3>
+                <p class="project-editorial-desc">
+                  An AI-powered project management platform with GitHub integration, designed to improve team collaboration and development workflows.
+                </p>
+
+                <div class="project-action-row">
+                  <span class="badge-status-pill upcoming-pill">
+                    <span>Coming Soon</span>
+                  </span>
+                  <button class="btn-pill-outline btn-detail-trigger" type="button" data-open-project="devflow">
+                    <span>Details</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- PROJECT 03: Live Leaderboard Using Redis -->
+            <article class="project-editorial-card" data-category="systems" data-project-id="redis-leaderboard">
+              <div class="project-media-viewport">
+                <div class="project-card-badge status-opensource">
+                  <span class="os-dot"></span>
+                  <span>OPEN SOURCE</span>
+                </div>
+                <img 
+                  src="assets/redis-leaderboard.svg" 
+                  alt="Live Leaderboard Using Redis system architecture and realtime score rankings" 
+                  class="project-media-img"
+                  loading="lazy"
+                />
+                <div class="project-card-overlay">
+                  <button class="btn-quick-view" type="button" data-open-project="redis-leaderboard">
+                    <span>Quick View</span>
+                    <span aria-hidden="true">↗</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="project-meta-details">
+                <div class="project-meta-top">
+                  <span class="project-sequence-num">PROJECT 03</span>
+                  <div class="project-tag-pills">
+                    <span class="tag-pill">Redis</span>
+                    <span class="tag-pill">Backend API</span>
+                  </div>
+                </div>
+                
+                <h3 class="project-editorial-title">Live Leaderboard Using Redis</h3>
+                <p class="project-editorial-desc">
+                  A live leaderboard API powered by Redis that tracks post views, updates user scores, retrieves top-ranked users, and looks up individual rankings.
+                </p>
+
+                <div class="project-action-row">
+                  <a href="https://github.com/Amrittt22/live-leaderboard-using-redis" target="_blank" rel="noopener noreferrer" class="btn-pill-dark btn-project-action">
+                    <span>View on GitHub</span>
+                    <span class="btn-arrow" aria-hidden="true">↗</span>
+                  </a>
+                  <button class="btn-pill-outline btn-detail-trigger" type="button" data-open-project="redis-leaderboard">
+                    <span>Details</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- PROJECT 04: Zonify Extension -->
+            <article class="project-editorial-card" data-category="systems" data-project-id="zonify">
+              <div class="project-media-viewport">
+                <div class="project-card-badge status-extension">
+                  <span class="ext-dot"></span>
+                  <span>CHROME EXTENSION</span>
+                </div>
+                <img 
+                  src="assets/zonify-extension.svg" 
+                  alt="Zonify Chrome Extension Pomodoro timer and distraction blocker interface" 
+                  class="project-media-img"
+                  loading="lazy"
+                />
+                <div class="project-card-overlay">
+                  <button class="btn-quick-view" type="button" data-open-project="zonify">
+                    <span>Quick View</span>
+                    <span aria-hidden="true">↗</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="project-meta-details">
+                <div class="project-meta-top">
+                  <span class="project-sequence-num">PROJECT 04</span>
+                  <div class="project-tag-pills">
+                    <span class="tag-pill">Productivity</span>
+                    <span class="tag-pill">Manifest V3</span>
+                  </div>
+                </div>
+                
+                <h3 class="project-editorial-title">Zonify Extension</h3>
+                <p class="project-editorial-desc">
+                  A Chrome productivity extension featuring a Pomodoro focus timer and distraction-blocking functionality.
+                </p>
+
+                <div class="project-action-row">
+                  <a href="https://github.com/Amrittt22/Zonify-Extension" target="_blank" rel="noopener noreferrer" class="btn-pill-dark btn-project-action">
+                    <span>View on GitHub</span>
+                    <span class="btn-arrow" aria-hidden="true">↗</span>
+                  </a>
+                  <button class="btn-pill-outline btn-detail-trigger" type="button" data-open-project="zonify">
+                    <span>Details</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- 05. EXPERIENCE & CODING PROFILES (Dark Section Transition) -->
+        <!-- ============================================================ -->
+        <section class="content-section experience-section" id="experience">
+          <div class="experience-card-inner">
+            <div class="watermark-bg watermark-dark" aria-hidden="true">EXPERIENCE</div>
+
+            <div class="section-top-bar section-top-bar-light">
+              <span class="section-index-tag">(04 / EXPERIENCE &amp; MILESTONES)</span>
+              <div class="section-divider-line"></div>
+            </div>
+
+            <div class="experience-header-block">
+              <h2 class="experience-main-title">Engineering Journey &amp; Milestones</h2>
+              <p class="experience-subtext">
+                Academic foundations, open-source building, research projects, and verified problem-solving track record.
+              </p>
+            </div>
+
+            <!-- Experience Timeline Rows with Interactive Floating Preview -->
+            <div class="experience-rows-container">
+              
+              <!-- Item 01 -->
+              <div class="experience-row" data-preview-img="assets/portrait.jpg" data-preview-title="NMIT Bengaluru" data-preview-desc="B.E. Computer Science & Engineering (2024–2028)">
+                <div class="exp-date-col">2024 — Present</div>
+                <div class="exp-role-col">
+                  <h3 class="exp-role-title">B.E. Computer Science &amp; Engineering</h3>
+                  <p class="exp-company-text">Nitte Meenakshi Institute of Technology · Bengaluru, India</p>
+                </div>
+                <div class="exp-badge-col">
+                  <span class="exp-status-pill">Academics</span>
+                  <span class="exp-hover-arrow">↗</span>
+                </div>
+              </div>
+
+              <!-- Item 02 -->
+              <div class="experience-row" data-preview-img="assets/devflow-dashboard.png" data-preview-title="Full-Stack Engineering" data-preview-desc="Architecting DayFlow, DevFlow, Redis Leaderboard & Zonify">
+                <div class="exp-date-col">2026 — Present</div>
+                <div class="exp-role-col">
+                  <h3 class="exp-role-title">Full-Stack &amp; Systems Developer</h3>
+                  <p class="exp-company-text">Independent Open-Source Projects · TypeScript, Redis, PostgreSQL</p>
+                </div>
+                <div class="exp-badge-col">
+                  <span class="exp-status-pill">Active Builds</span>
+                  <span class="exp-hover-arrow">↗</span>
+                </div>
+              </div>
+
+              <!-- Item 03 -->
+              <div class="experience-row" data-preview-img="assets/dayflow-workspace.png" data-preview-title="hackathon project" data-preview-desc="DayFlow — A modern full-stack HRMS that brings employee management,">
+                <div class="exp-date-col">2025 — 2026</div>
+                <div class="exp-role-col">
+                  <h3 class="exp-role-title">DayFlow — A modern full-stack HRMS that brings employee management,</h3>
+                  <p class="exp-company-text">Hackathon Project· NMIT</p>
+                </div>
+                <div class="exp-badge-col">
+                  <span class="exp-status-pill">Research</span>
+                  <span class="exp-hover-arrow">↗</span>
+                </div>
+              </div>
+
+              <!-- Item 04 -->
+              <div class="experience-row" data-preview-img="assets/redis-leaderboard.svg" data-preview-title="LeetCode & GFG" data-preview-desc="500+ algorithmic problems solved">
+                <div class="exp-date-col">Continuous</div>
+                <div class="exp-role-col">
+                  <h3 class="exp-role-title">Competitive Problem Solving (500+ Solved)</h3>
+                  <p class="exp-company-text">LeetCode (amrittt_22) &amp; GeeksforGeeks (amritansh35xf) · C++ </p>
+                </div>
+                <div class="exp-badge-col">
+                  <span class="exp-status-pill">Algorithms</span>
+                  <span class="exp-hover-arrow">↗</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Floating Preview Card (Matches reference video hover interaction) -->
+            <div class="floating-exp-preview" id="expFloatingPreview" aria-hidden="true">
+              <div class="floating-preview-thumb">
+                <img src="" alt="" id="expPreviewImg" />
+              </div>
+              <div class="floating-preview-info">
+                <strong id="expPreviewTitle"></strong>
+                <span id="expPreviewDesc"></span>
+              </div>
+            </div>
+
+            <!-- Verified Coding Profiles Banner -->
+            <div class="coding-profiles-strip">
+              <div class="strip-header">
+                <span class="strip-kicker">VERIFIED CODING PROFILES</span>
+                <span class="strip-stat">500+ Problems Solved</span>
+              </div>
+              <div class="strip-links">
+                <a href="https://leetcode.com/u/amrittt_22" target="_blank" rel="noopener noreferrer" class="strip-card">
+                  <div class="strip-card-left">
+                    <span class="strip-icon">⌘</span>
+                    <div>
+                      <strong>LeetCode</strong>
+                      <span>@amrittt_22</span>
+                    </div>
+                  </div>
+                  <span class="strip-arrow">↗</span>
+                </a>
+
+                <a href="https://www.geeksforgeeks.org/profile/amritansh35xf" target="_blank" rel="noopener noreferrer" class="strip-card">
+                  <div class="strip-card-left">
+                    <span class="strip-icon">◈</span>
+                    <div>
+                      <strong>GeeksforGeeks</strong>
+                      <span>@amritansh35xf</span>
+                    </div>
+                  </div>
+                  <span class="strip-arrow">↗</span>
+                </a>
+
+                <a href="https://github.com/Amrittt22" target="_blank" rel="noopener noreferrer" class="strip-card">
+                  <div class="strip-card-left">
+                    <span class="strip-icon">{ }</span>
+                    <div>
+                      <strong>GitHub</strong>
+                      <span>@Amrittt22</span>
+                    </div>
+                  </div>
+                  <span class="strip-arrow">↗</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- 06. CONTACT & FOOTER SECTION -->
+        <!-- ============================================================ -->
+        <section class="content-section contact-section" id="contact">
+          <div class="section-top-bar">
+            <span class="section-index-tag">(05 / GET IN TOUCH)</span>
+            <div class="section-divider-line"></div>
+          </div>
+
+          <div class="contact-main-block">
+            <!-- Massive Closing Headline matching Reference Video -->
+            <p class="contact-kicker-overline">HAVE A PROJECT IN MIND?</p>
+            <h2 class="contact-huge-headline">
+              LET'S COLLABORATE<br />
+              <span class="text-outline">AND BUILD IT.</span>
+            </h2>
+
+            <p class="contact-lead-desc">
+              Whether you are looking for an ambitious software engineer, an intern for full-stack systems, or someone to turn a complex technical idea into production software — let's connect.
+            </p>
+
+            <div class="contact-cta-action">
+              <a href="mailto:amritanshusingh2205@gmail.com" class="btn-pill-dark btn-email-big">
+                <svg class="email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>amritanshusingh2205@gmail.com</span>
+                <span class="btn-arrow" aria-hidden="true">↗</span>
+              </a>
+            </div>
+
+            <!-- Social Links Row -->
+            <div class="contact-social-grid">
+              <a href="https://github.com/Amrittt22" target="_blank" rel="noopener noreferrer" class="contact-social-card">
+                <span class="social-meta-label">GITHUB</span>
+                <strong class="social-meta-val">Amrittt22</strong>
+                <span class="social-card-arrow">↗</span>
+              </a>
+
+              <a href="https://www.linkedin.com/in/amritanshu-kumar-singh-203254333/" target="_blank" rel="noopener noreferrer" class="contact-social-card">
+                <span class="social-meta-label">LINKEDIN</span>
+                <strong class="social-meta-val">Amritanshu Kumar Singh</strong>
+                <span class="social-card-arrow">↗</span>
+              </a>
+
+              <a href="https://leetcode.com/u/amrittt_22" target="_blank" rel="noopener noreferrer" class="contact-social-card">
+                <span class="social-meta-label">LEETCODE</span>
+                <strong class="social-meta-val">amrittt_22</strong>
+                <span class="social-card-arrow">↗</span>
+              </a>
+
+              <a href="https://instagram.com/amritanshuchauhann" target="_blank" rel="noopener noreferrer" class="contact-social-card">
+                <span class="social-meta-label">INSTAGRAM</span>
+                <strong class="social-meta-val">@amritanshuchauhann</strong>
+                <span class="social-card-arrow">↗</span>
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Clean Minimal Footer -->
+      <footer class="site-footer">
+        <div class="footer-left">
+          <a href="#top" class="footer-brand" aria-label="Back to top">
+            <span class="footer-brand-mark">A.</span>
+            <span class="footer-brand-name">Amritanshu Singh</span>
+          </a>
+          <span class="footer-location-time" id="localTimeDisplay">
+            Bengaluru, IN · <span id="timeString">11:55 PM</span> IST
+          </span>
         </div>
-      </section>
 
-      <section class="proof section" id="proof">
-        <div class="section-label"><span>04 / PROOF OF PRACTICE</span><span class="label-rule"></span></div>
-        <div class="proof-content"><div><p class="proof-kicker">SMALL STEPS, EVERY DAY</p><h2>500<span>+</span></h2><p class="proof-caption">problems solved<br />and counting.</p></div><div class="proof-copy"><p>I’m an active problem solver on LeetCode and GeeksforGeeks, sharpening my fundamentals one problem at a time.</p><div class="profile-links"><a href="https://leetcode.com/u/amrittt_22" target="_blank" rel="noreferrer">LeetCode <span>↗</span></a><a href="https://www.geeksforgeeks.org/profile/amritansh35xf" target="_blank" rel="noreferrer">GeeksforGeeks <span>↗</span></a></div></div><span class="proof-doodle" aria-hidden="true">✳</span></div>
-      </section>
+        <div class="footer-center">
+          <span class="footer-copy-text">© 2026 AMRITANSHU KUMAR SINGH. DESIGN INSPIRED BY EDITORIAL MINIMALISM.</span>
+        </div>
 
-      <section class="service section"><div class="section-label"><span>05 / HOW I CAN HELP</span><span class="label-rule"></span></div><div class="service-content"><span class="service-icon">↗</span><div><p class="service-kicker">SERVICE / 01</p><h2>Full-Stack Web<br /><span>Development</span></h2></div><p class="service-description">Building modern web applications across frontend and backend, with attention to useful features, maintainable code, and a thoughtful user experience.</p></div></section>
+        <div class="footer-right">
+          <a href="#top" class="btn-back-top" aria-label="Back to top of page">
+            <span>Top</span>
+            <span aria-hidden="true">↑</span>
+          </a>
+        </div>
+      </footer>
 
-      <section class="contact" id="contact"><div class="contact-inner"><div class="section-label section-label-light"><span>06 / YOUR NEXT IDEA STARTS HERE</span><span class="label-rule"></span></div><div class="contact-main"><p class="contact-kicker">HAVE A PROJECT IN MIND?</p><h2>Let’s build<br /><span>something useful.</span><i>✳</i></h2><p class="contact-copy">Open to connecting about collaboration, projects, or full-stack development opportunities.</p><a class="button button-yellow" href="mailto:amritanshusingh2205@gmail.com">amritanshusingh2205@gmail.com <span>↗</span></a></div><div class="social-grid"><a href="https://github.com/Amrittt22" target="_blank" rel="noreferrer"><span>GITHUB</span><strong>Amrittt22</strong><i>↗</i></a><a href="https://linkedin.com/in/amritanshu-kumar-singh-203254333" target="_blank" rel="noreferrer"><span>LINKEDIN</span><strong>Amritanshu Kumar Singh</strong><i>↗</i></a><a href="https://leetcode.com/u/amrittt_22" target="_blank" rel="noreferrer"><span>LEETCODE</span><strong>amrittt_22</strong><i>↗</i></a><a href="https://www.geeksforgeeks.org/profile/amritansh35xf" target="_blank" rel="noreferrer"><span>GEEKSFORGEEKS</span><strong>amritansh35xf</strong><i>↗</i></a><a href="https://instagram.com/amritanshuchauhann" target="_blank" rel="noreferrer"><span>INSTAGRAM</span><strong>@amritanshuchauhann</strong><i>↗</i></a></div></div></section>
-    </main>
-    <footer class="footer"><a class="brand footer-brand" href="#home"><span class="brand-mark">A<span>.</span></span><span class="brand-name">Amritanshu<br />Kumar Singh</span></a><p>Full-Stack Developer <span>·</span> AI Enthusiast</p><div class="footer-nav"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a></div><span class="copyright">© 2026 AMRITANSHU KUMAR SINGH</span><a class="back-top" href="#home" aria-label="Back to top">↑</a></footer>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- INTERACTIVE PROJECT DETAIL MODAL (Matching Reference Video) -->
+    <!-- ============================================================ -->
+    <div class="project-modal-backdrop" id="projectModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalProjectTitle">
+      <div class="project-modal-sheet" id="modalSheet">
+        <!-- Modal Top Bar -->
+        <div class="modal-top-bar">
+          <button class="btn-modal-back" id="closeModalBtn" type="button" aria-label="Back to projects">
+            <span aria-hidden="true">←</span>
+            <span>Back</span>
+          </button>
+
+          <div class="modal-badge-wrapper">
+            <span class="modal-status-badge" id="modalBadge">LIVE / AVAILABLE</span>
+          </div>
+        </div>
+
+        <!-- Modal Content Container -->
+        <div class="modal-content-container">
+          <div class="modal-tags-row" id="modalTags">
+            <!-- Dynamic tags injected by JS -->
+          </div>
+
+          <div class="modal-header-block">
+            <h2 class="modal-project-title" id="modalProjectTitle">Project Title</h2>
+            <p class="modal-project-tagline" id="modalProjectTagline">Tagline goes here</p>
+          </div>
+
+          <!-- Project Hero Preview Image -->
+          <div class="modal-hero-preview">
+            <img src="" alt="" id="modalProjectImg" class="modal-preview-img" />
+          </div>
+
+          <!-- Metadata Spec Grid -->
+          <div class="modal-spec-grid">
+            <div class="spec-card">
+              <span class="spec-label">DOMAIN / SERVICE</span>
+              <strong class="spec-val" id="modalDomain">Full-Stack Web Development</strong>
+            </div>
+            <div class="spec-card">
+              <span class="spec-label">TIMELINE</span>
+              <strong class="spec-val" id="modalTimeline">2026</strong>
+            </div>
+            <div class="spec-card">
+              <span class="spec-label">CORE TECHNOLOGIES</span>
+              <strong class="spec-val" id="modalTechStack">React, Node.js, Redis</strong>
+            </div>
+          </div>
+
+          <!-- Extended Story / Narrative -->
+          <div class="modal-narrative-section">
+            <h3 class="modal-section-heading">Overview &amp; Implementation</h3>
+            <div class="modal-narrative-copy" id="modalNarrative">
+              <!-- Narrative injected by JS -->
+            </div>
+          </div>
+
+          <!-- Modal Action Row -->
+          <div class="modal-cta-row" id="modalActions">
+            <!-- Dynamic Buttons injected by JS -->
+          </div>
+
+          <!-- (MORE WORK) Strip matching Reference Video seq_25_20.2s.jpg -->
+          <div class="modal-more-work-strip">
+            <div class="more-work-header">
+              <span class="more-work-label">(MORE WORK)</span>
+              <div class="more-work-line"></div>
+            </div>
+            <div class="more-work-thumbnails" id="modalMoreWorkStrip">
+              <!-- Thumbnails of other 3 projects -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="script.js"></script>
   </body>
 </html>
