@@ -5,7 +5,7 @@ Computer Science student based in Bengaluru. The site presents selected
 projects, development services, education, problem-solving work, and contact
 links in an editorial-style single-page experience.
 
-**Live site:** [myportfolio-amrit7.vercel.app](https://myportfolio-amrit7.vercel.app/)
+**Live site:** [amrittt22.me](https://amrittt22.me/)
 
 ## What is on the site
 
