@@ -273,14 +273,26 @@ document.addEventListener('DOMContentLoaded', () => {
       return data;
     }
 
+    async function fetchGfgOnce() {
+      const res = await fetch(GFG_PROXY, { headers: { 'X-Return-Format': 'html' } });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return parseGfg(await res.text());
+    }
+
     async function fetchGfgLive() {
       const cached = gfgCacheGet();
       if (cached) return cached;
-      const res = await fetch(GFG_PROXY, { headers: { 'X-Return-Format': 'html' } });
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      const data = parseGfg(await res.text());
-      gfgCacheSet(data);
-      return data;
+      try {
+        const data = await fetchGfgOnce();
+        gfgCacheSet(data);
+        return data;
+      } catch (firstErr) {
+        // The reader proxy occasionally rate-limits — one retry is enough.
+        await new Promise((r) => setTimeout(r, 900));
+        const data = await fetchGfgOnce();
+        gfgCacheSet(data);
+        return data;
+      }
     }
 
     function dsaCount(el, value) {
@@ -358,7 +370,8 @@ document.addEventListener('DOMContentLoaded', () => {
             ${rank ? `<span>Rank <b>#${rank.toLocaleString('en-US')}</b></span>` : ''}
           </div>`;
 
-        const gfgLine = gfgLive && (gfgLive.score != null || gfgLive.solved != null)
+        const gfgHasStats = gfgLive && (gfgLive.score != null || gfgLive.solved != null);
+        const gfgBody = gfgHasStats
           ? `<div class="dsa-live-total">
               <span class="dsa-live-big" id="dsaGfgScore">0</span>
               <span class="dsa-live-big-label">coding score</span>
@@ -367,23 +380,27 @@ document.addEventListener('DOMContentLoaded', () => {
               <div class="dsa-live-stat"><span>Solved</span><b id="dsaGfgSolved">0</b></div>
               ${gfgLive.rank != null ? `<div class="dsa-live-stat"><span>Institute rank</span><b>#${gfgLive.rank}</b></div>` : ''}
             </div>`
-          : null;
-
-        if (gfgLine) {
-          gfgCard.innerHTML = `
-            <div class="dsa-live-head">
-              <img class="dsa-live-avatar" src="assets/gfg-avatar.png" alt="" />
-              <div class="dsa-live-id">
-                <span class="dsa-live-name">GeeksforGeeks</span>
-                <span class="dsa-live-handle">@${GFG_USER}</span>
-              </div>
-              <svg class="dsa-live-glyph" viewBox="0 0 24 24" fill="#2f8d46"><path d="${gfgLogoPath}"/></svg>
-              <span class="dsa-live-badge"><span class="live-dot"></span>LIVE</span>
+          : `<div class="dsa-live-total">
+              <span class="dsa-live-big is-muted">&mdash;</span>
+              <span class="dsa-live-big-label">coding score</span>
             </div>
-            ${gfgLine}`;
-        } else {
-          gfgCard.style.display = 'none';
-        }
+            <div class="dsa-live-stats">
+              <div class="dsa-live-stat"><span>Solved</span><b>&mdash;</b></div>
+              <div class="dsa-live-stat"><span>Institute rank</span><b>&mdash;</b></div>
+            </div>
+            <p class="dsa-live-note">Live stats refresh on next hover</p>`;
+
+        gfgCard.innerHTML = `
+          <div class="dsa-live-head">
+            <img class="dsa-live-avatar" src="assets/gfg-avatar.png" alt="" />
+            <div class="dsa-live-id">
+              <span class="dsa-live-name">GeeksforGeeks</span>
+              <span class="dsa-live-handle">@${GFG_USER}</span>
+            </div>
+            <svg class="dsa-live-glyph" viewBox="0 0 24 24" fill="#2f8d46"><path d="${gfgLogoPath}"/></svg>
+            <span class="dsa-live-badge"><span class="live-dot"></span>LIVE</span>
+          </div>
+          ${gfgBody}`;
 
         dsaCard.hidden = false;
         gfgCard.hidden = false;
@@ -407,8 +424,8 @@ document.addEventListener('DOMContentLoaded', () => {
         dsaCount(card.querySelector('#dsaLiveEasy'), easy);
         dsaCount(card.querySelector('#dsaLiveMedium'), medium);
         dsaCount(card.querySelector('#dsaLiveHard'), hard);
-        if (gfgLine) dsaCount(gfgCard.querySelector('#dsaGfgScore'), gfgLive.score ?? 0);
-        if (gfgLine) dsaCount(gfgCard.querySelector('#dsaGfgSolved'), gfgLive.solved ?? 0);
+        if (gfgHasStats && gfgLive.score != null) dsaCount(gfgCard.querySelector('#dsaGfgScore'), gfgLive.score);
+        if (gfgHasStats && gfgLive.solved != null) dsaCount(gfgCard.querySelector('#dsaGfgSolved'), gfgLive.solved);
       } catch (err) {
         // API down or offline — keep the polished static SVG preview
         dsaLive.dataset.state = 'error';
