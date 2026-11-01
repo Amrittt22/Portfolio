@@ -536,6 +536,42 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ==========================================================
+     MAILTO FALLBACK
+     Desktop browsers without a configured mail app silently
+     ignore mailto: links. If nothing takes over the window,
+     open a Gmail compose tab so the email always opens.
+     ========================================================== */
+  document.addEventListener('click', (event) => {
+    const target =
+      event.target instanceof Element ? event.target.closest('a[href^="mailto:"]') : null;
+    if (!target) return;
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+    const address = decodeURIComponent(
+      target.getAttribute('href').replace(/^mailto:/i, '').split('?')[0]
+    );
+    if (!address) return;
+
+    let handled = false;
+    const markHandled = () => {
+      handled = true;
+    };
+    window.addEventListener('blur', markHandled, { once: true });
+    document.addEventListener('visibilitychange', markHandled, { once: true });
+
+    setTimeout(() => {
+      window.removeEventListener('blur', markHandled);
+      document.removeEventListener('visibilitychange', markHandled);
+      if (handled || document.visibilityState !== 'visible') return;
+      window.open(
+        'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(address),
+        '_blank',
+        'noopener'
+      );
+    }, 900);
+  });
+
+  /* ==========================================================
      06 · SUBTLE REVEAL-ON-SCROLL
      ========================================================== */
   const revealTargets = document.querySelectorAll(
