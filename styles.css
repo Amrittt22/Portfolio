@@ -139,6 +139,45 @@ a {
 }
 
 /* ============================================================
+   SMALL-SCREEN NOTICE
+   Desktop-only interactions (hover previews, cursor cards) do not
+   exist on phones, so point visitors at a larger screen.
+   ============================================================ */
+.screen-notice {
+  display: none;
+  align-items: flex-start;
+  gap: 10px;
+  width: min(560px, 92.5vw);
+  margin: clamp(16px, 4vw, 24px) auto 0;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 14px;
+  box-shadow: 0 10px 26px rgba(20, 20, 24, 0.14);
+  color: var(--ink-soft);
+  font-size: 0.79rem;
+  line-height: 1.55;
+  text-align: left;
+}
+
+.screen-notice svg {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  color: var(--ink-mute);
+}
+
+.screen-notice p {
+  margin: 0;
+}
+
+.screen-notice strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ============================================================
    WINDOW CARD
    ============================================================ */
 .page-card {
@@ -1553,6 +1592,14 @@ button:focus-visible {
 }
 
 @media (max-width: 860px) {
+  .screen-notice {
+    display: flex;
+  }
+
+  .page-card {
+    margin-top: 16px;
+  }
+
   .site-nav {
     gap: 12px;
   }

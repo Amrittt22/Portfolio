@@ -230,10 +230,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const GFG_PAGE = 'https://www.geeksforgeeks.org/user/' + GFG_USER + '/';
     const GFG_PROXY = 'https://r.jina.ai/' + GFG_PAGE;
     const GFG_CACHE_KEY = 'amritanshu-gfg-live-v2';
-    const GFG_TTL_MS = 5 * 60 * 1000;
+    const GFG_TTL_MS = 2 * 60 * 1000;
+    const LC_REFRESH_MS = 10 * 60 * 1000;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let dsaLoaded = false;
     let dsaLoading = false;
+    let lcFetchedAt = 0;
+    let gfgFetchedAt = 0;
 
     async function dsaFetch(url, timeoutMs = 12000) {
       const controller = new AbortController();
@@ -448,47 +451,63 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function loadDsaLive() {
-      if (dsaLoaded || dsaLoading) return;
+      if (dsaLoading) return;
+
+      const now = Date.now();
+      const needLc = !dsaLoaded || now - lcFetchedAt > LC_REFRESH_MS;
+      const needGfg = !dsaLoaded || now - gfgFetchedAt > GFG_TTL_MS;
+      if (!needLc && !needGfg) return;
+
       dsaLoading = true;
 
-      // Show both profile cards immediately so the hover always responds,
-      // then stream the live numbers in as each platform answers.
-      paintLcCard(null, null, null, true);
-      paintGfgCard(null, 'loading');
-      dsaCard.hidden = false;
-      gfgCard.hidden = false;
-      dsaLive.dataset.state = 'live';
+      if (!dsaLoaded) {
+        // First load: show both profile cards immediately so the hover
+        // always responds, then stream the live numbers in.
+        paintLcCard(null, null, null, true);
+        paintGfgCard(null, 'loading');
+        dsaCard.hidden = false;
+        gfgCard.hidden = false;
+        dsaLive.dataset.state = 'live';
+      }
+      // On a background refresh the cards stay exactly as they are — the
+      // numbers just update in place when the new data lands.
 
-      const lcPromise = Promise.all([
-        dsaFetch(LC_API).catch(() => null),
-        dsaFetch(LC_API + '/solved').catch(() => null),
-        dsaFetch(LC_API + '/contest').catch(() => null),
-      ])
-        .then(([profile, solved, contest]) => {
-          if (!solved) return false;
-          paintLcCard(profile, solved, contest, false);
-          return true;
-        })
-        .catch(() => false);
+      const lcPromise = needLc
+        ? Promise.all([
+            dsaFetch(LC_API).catch(() => null),
+            dsaFetch(LC_API + '/solved').catch(() => null),
+            dsaFetch(LC_API + '/contest').catch(() => null),
+          ])
+            .then(([profile, solved, contest]) => {
+              if (!solved) return false;
+              paintLcCard(profile, solved, contest, false);
+              lcFetchedAt = Date.now();
+              return true;
+            })
+            .catch(() => false)
+        : Promise.resolve(true);
 
-      const gfgPromise = fetchGfgLive()
-        .then((data) => {
-          if (data && (data.score != null || data.solved != null)) {
-            paintGfgCard(data, 'ready');
-            return true;
-          }
-          paintGfgCard(null, 'error');
-          return false;
-        })
-        .catch(() => {
-          paintGfgCard(null, 'error');
-          return false;
-        });
+      const gfgPromise = needGfg
+        ? fetchGfgLive()
+            .then((data) => {
+              if (data && (data.score != null || data.solved != null)) {
+                paintGfgCard(data, 'ready');
+                gfgFetchedAt = Date.now();
+                return true;
+              }
+              if (!dsaLoaded) paintGfgCard(null, 'error');
+              return false;
+            })
+            .catch(() => {
+              if (!dsaLoaded) paintGfgCard(null, 'error');
+              return false;
+            })
+        : Promise.resolve(true);
 
       const [lcOk, gfgOk] = await Promise.all([lcPromise, gfgPromise]);
       dsaLoading = false;
       // If nothing loaded, leave the cards up but retry on the next hover.
-      dsaLoaded = lcOk || gfgOk;
+      dsaLoaded = dsaLoaded || lcOk || gfgOk;
     }
 
     const dsaRow = dsaLive.closest('.service-row');
