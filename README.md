@@ -1,65 +1,100 @@
-# Amritanshu Singh - Personal Developer Portfolio
+# Amritanshu Singh — Developer Portfolio
 
-A premium, editorial-minimalist static portfolio showcasing full-stack projects, distributed systems architecture, algorithmic problem-solving, and software engineering experience.
+The personal portfolio of Amritanshu Singh, a full-stack developer and
+Computer Science student based in Bengaluru. The site presents selected
+projects, development services, education, problem-solving work, and contact
+links in an editorial-style single-page experience.
 
-**Live Deployment:** [myportfolio-amrit7.vercel.app](https://myportfolio-amrit7.vercel.app/)
+**Live site:** [myportfolio-amrit7.vercel.app](https://myportfolio-amrit7.vercel.app/)
 
-## Visual System & Design Direction
+## What is on the site
 
-The site uses a typography-first editorial design inspired by the Dymas Alfin portfolio reference:
+The portfolio is organized into five sections:
 
-- **Cloud Window:** The site lives inside a floating white rounded card over an animated grayscale cloud backdrop.
-- **Hero Statement:** Oversized outlined and solid typography wraps around an AI-cutout grayscale portrait, with quick social pills on the right.
-- **Watermark Backdrop:** Subtle giant display typography (`PORTFOLIO`, `SERVICE`, `EXPERIENCE`) sits behind each section heading.
-- **Restrained Interface:** Floating pill navigation, live availability status, and understated interactive controls.
-- **Interactive Layers:**
-  - Work grid with All / Full Stack / Systems & Tools filters and animated cards.
-  - Project detail views with tags, Service/Tools facts, Live Preview CTAs, and screenshot sets.
-  - Service rows that expand dark on hover with descriptions and floating tilted previews.
-  - Dark Experience section with cursor-following preview images.
-  - Live LeetCode and cached GeeksforGeeks statistics where external APIs are available.
+- **Hero:** Introduction, availability status, portrait, and links to GitHub,
+  LinkedIn, LeetCode, GeeksforGeeks, and email.
+- **Selected Work:** Filterable project cards with `All`, `Full Stack`, and
+  `Systems & Tools` views. Selecting a card opens a detailed project view with
+  tags, tools, description, screenshots, and a relevant external link.
+- **Services:** Expandable descriptions for full-stack development, backend and
+  data systems, core programming and DSA, and tools and automation.
+- **Experience:** Education at NMIT Bengaluru, independent full-stack and
+  systems work, the DayFlow hackathon project, and competitive programming.
+- **Contact:** A project invitation and direct email CTA, followed by social
+  links in the footer.
 
-## Featured Projects
+## Featured projects
 
-| # | Project | Focus | Status / Links |
-|---|---|---|---|
-| **01** | **DayFlow** | Enterprise HR Management Platform | **Live Platform** - [Open App](https://dayflowhrm-eq7f4z79.manus.space/app) |
-| **02** | **DevFlow** | AI-Powered Project Management & GitHub Sync | **Coming Soon** - In Active Development |
-| **03** | **Live Leaderboard Using Redis** | High-Throughput Real-Time Score Ranking API | **Open Source** - [GitHub Repository](https://github.com/Amrittt22/live-leaderboard-using-redis) |
-| **04** | **Zonify Extension** | Chrome Focus Timer & Distraction Blocker (MV3) | **Chrome Extension** - [GitHub Repository](https://github.com/Amrittt22/Zonify-Extension) |
+| Project | Description | Status |
+|---|---|---|
+| [DayFlow](https://dayflowhrm-eq7f4z79.manus.space/app) | Full-stack HRMS with employee and HR/Admin views, attendance, leave, payroll, announcements, chat, and Google Meet collaboration. | Live platform |
+| [DevFlow](https://github.com/Amrittt22/DevFlow) | Team collaboration platform with workspaces, projects, Kanban, list and calendar views, labels, assignments, invitations, and workspace roles. | In development |
+| [Live Leaderboard Using Redis](https://github.com/Amrittt22/live-leaderboard-using-redis) | Node.js and Express leaderboard backed by Redis Sorted Sets, with a browser UI, JSON API, automatic refresh, and Docker Compose setup. | Open source |
+| [Zonify](https://github.com/Amrittt22/Zonify-Extension) | Manifest V3 Chrome focus timer and site blocker with persistent timers, declarative blocking, options, statistics, CI, and tagged releases. | Chrome extension |
 
-## Technical Skills & Stack
+## Technology
 
-- **Languages:** C++, JavaScript (ES6+), TypeScript, HTML5, CSS3
-- **Frontend:** React, Tailwind CSS, Responsive & Accessible UI
-- **Backend & Data:** Node.js, Express, Redis (sorted sets and caching), PostgreSQL, Supabase, Prisma ORM, RESTful APIs
-- **Tools & Workflow:** Git, GitHub, Docker, Postman, Vercel, Linux
-- **Problem Solving:** 500+ problems solved across LeetCode and GeeksforGeeks
+- **Portfolio:** Semantic HTML, CSS, and vanilla JavaScript
+- **Languages:** C++, JavaScript, TypeScript, HTML, and CSS
+- **Frontend:** React, React 18, Tailwind CSS, Vite, and CRXJS
+- **Backend and data:** Node.js, Express, tRPC, PostgreSQL, Supabase,
+  Prisma, Redis Sorted Sets, and REST APIs
+- **Tools:** Git, GitHub, Docker Compose, Postman, Linux, and Vercel
+- **Problem solving:** 500+ problems across LeetCode and GeeksforGeeks
 
-## Local Development & Build
+## Interactive features
+
+- Responsive editorial layout with an animated cloud backdrop and floating
+  project previews.
+- Project filtering and accessible project detail dialog with keyboard-aware
+  navigation and scroll locking.
+- Expandable service rows with preview imagery.
+- Cursor-following previews in the Experience section.
+- LeetCode statistics loaded live on first interaction; GeeksforGeeks
+  statistics use the available profile data with a static fallback when the
+  external request is unavailable.
+
+## Local development
+
+This repository does not require a frontend framework or package installation
+to edit the source. Node.js is used for the static build script and the
+development server.
 
 ```bash
-# Clone the repository
 git clone https://github.com/Amrittt22/portfolio.git
 cd portfolio
-
-# Build the static production site
 npm run build
-
-# Start a local server
 npm run start
 ```
 
-The production build is written to `dist/` and includes the HTML, CSS, JavaScript, and `assets/` directory. Deployment is configured for Vercel through `vercel.json`.
+Available scripts:
+
+| Command | Purpose |
+|---|---|
+| `npm run dev` | Serve the repository locally |
+| `npm run build` | Copy the site into `dist/` and syntax-check `dist/script.js` |
+| `npm run start` | Serve the repository locally |
+
+The build copies `index.html`, `styles.css`, `script.js`, and `assets/` into
+`dist/`. Vercel uses `npm run build` and deploys `dist/`, as configured in
+[`vercel.json`](./vercel.json).
+
+## Repository structure
+
+```text
+index.html       Page structure and project detail dialog
+styles.css       Layout, responsive styles, animation, and visual system
+script.js        Project data and interactive behavior
+build.js         Static production build
+assets/          Portfolio imagery, project screenshots, and stats graphics
+public/images/   Additional source imagery
+vercel.json      Vercel build and output configuration
+```
 
 ## Connect
 
-- **GitHub:** [github.com/Amrittt22](https://github.com/Amrittt22)
-- **LinkedIn:** [linkedin.com/in/amritanshu-kumar-singh-203254333](https://www.linkedin.com/in/amritanshu-kumar-singh-203254333/)
-- **LeetCode:** [leetcode.com/u/amrittt_22](https://leetcode.com/u/amrittt_22)
-- **GeeksforGeeks:** [geeksforgeeks.org/profile/amritansh35xf](https://www.geeksforgeeks.org/profile/amritansh35xf/)
-- **Email:** [amritanshusingh2205@gmail.com](mailto:amritanshusingh2205@gmail.com)
-
-## License
-
-The project metadata declares the MIT license. Add a `LICENSE` file before distributing the repository under that license.
+- [GitHub](https://github.com/Amrittt22)
+- [LinkedIn](https://www.linkedin.com/in/amritanshu-kumar-singh-203254333/)
+- [LeetCode](https://leetcode.com/u/amrittt_22)
+- [GeeksforGeeks](https://www.geeksforgeeks.org/profile/amritansh35xf/)
+- [Email](mailto:amritanshusingh2205@gmail.com)
