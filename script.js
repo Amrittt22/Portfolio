@@ -229,6 +229,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const GFG_USER = 'amritansh35xf';
     const GFG_PAGE = 'https://www.geeksforgeeks.org/user/' + GFG_USER + '/';
     const GFG_PROXY = 'https://r.jina.ai/' + GFG_PAGE;
+    const GFG_CACHE_KEY = 'amritanshu-gfg-live-v2';
+    const GFG_TTL_MS = 5 * 60 * 1000;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let dsaLoaded = false;
     let dsaLoading = false;
@@ -245,23 +247,23 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    function gfgHours(ms) { return ms / 36e5; }
-
     /* GfG has no public stats API — their user page server-renders a JSON
        blob with the real numbers (coding score, solved count, institute
-       rank). r.jina.ai proxies it with permissive CORS. Cached in
-       localStorage for 3 h so we stay well under the proxy's rate limits. */
+       rank). r.jina.ai proxies it with permissive CORS. Kept in
+       localStorage for only 5 min so a newly solved problem shows up
+       without hammering the proxy. */
     function gfgCacheGet() {
       try {
-        const raw = JSON.parse(localStorage.getItem('amritanshu-gfg-live') || 'null');
-        if (raw && gfgHours(Date.now() - raw.t) < 3 && raw.d && raw.d.score != null) return raw.d;
+        const raw = JSON.parse(localStorage.getItem(GFG_CACHE_KEY) || 'null');
+        const fresh = raw && Date.now() - raw.t < GFG_TTL_MS;
+        if (fresh && raw.d && (raw.d.score != null || raw.d.solved != null)) return raw.d;
       } catch (cacheErr) { /* private mode etc. — fetch live instead */ }
       return null;
     }
 
     function gfgCacheSet(data) {
       try {
-        localStorage.setItem('amritanshu-gfg-live', JSON.stringify({ t: Date.now(), d: data }));
+        localStorage.setItem(GFG_CACHE_KEY, JSON.stringify({ t: Date.now(), d: data }));
       } catch (cacheErr) { /* storage unavailable — non-fatal */ }
     }
 
@@ -283,8 +285,11 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fetchGfgOnce() {
       const controller = new AbortController();
       const timer = setTimeout(() => controller.abort(), 15000);
+      // The reader proxy caches per URL, so a minute-stamped query keeps
+      // repeats cheap while still fetching a fresh copy of the profile.
+      const cacheBust = '?t=' + Math.floor(Date.now() / 60000);
       try {
-        const res = await fetch(GFG_PROXY, {
+        const res = await fetch(GFG_PROXY + cacheBust, {
           headers: { 'X-Return-Format': 'html' },
           signal: controller.signal,
         });
