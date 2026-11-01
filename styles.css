@@ -890,6 +890,21 @@ a {
   color: #6b7280;
 }
 
+.dsa-live-card.is-loading .dsa-live-big.is-muted,
+.dsa-live-card.is-loading .dsa-live-note {
+  animation: dsaPulse 1.3s ease-in-out infinite;
+}
+
+@keyframes dsaPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
 .dsa-live-name,
 .dsa-live-handle {
   white-space: nowrap;
