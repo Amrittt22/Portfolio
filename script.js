@@ -255,11 +255,11 @@ document.addEventListener('DOMContentLoaded', () => {
        rank). r.jina.ai proxies it with permissive CORS. Kept in
        localStorage for only 5 min so a newly solved problem shows up
        without hammering the proxy. */
-    function gfgCacheGet() {
+    function gfgCacheGet(allowStale = false) {
       try {
         const raw = JSON.parse(localStorage.getItem(GFG_CACHE_KEY) || 'null');
-        const fresh = raw && Date.now() - raw.t < GFG_TTL_MS;
-        if (fresh && raw.d && (raw.d.score != null || raw.d.solved != null)) return raw.d;
+        if (!raw || !raw.d || (raw.d.score == null && raw.d.solved == null)) return null;
+        if (allowStale || Date.now() - raw.t < GFG_TTL_MS) return raw.d;
       } catch (cacheErr) { /* private mode etc. — fetch live instead */ }
       return null;
     }
@@ -313,9 +313,17 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (firstErr) {
         // The reader proxy occasionally rate-limits — one retry is enough.
         await new Promise((r) => setTimeout(r, 900));
-        const data = await fetchGfgOnce();
-        gfgCacheSet(data);
-        return data;
+        try {
+          const data = await fetchGfgOnce();
+          gfgCacheSet(data);
+          return data;
+        } catch (secondErr) {
+          // Fall back to stale cached data rather than showing an error,
+          // so a transient proxy failure never wipes the last known stats.
+          const stale = gfgCacheGet(true);
+          if (stale) return stale;
+          throw secondErr;
+        }
       }
     }
 
