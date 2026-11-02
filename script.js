@@ -232,6 +232,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const GFG_CACHE_KEY = 'amritanshu-gfg-live-v2';
     const GFG_TTL_MS = 2 * 60 * 1000;
     const LC_REFRESH_MS = 10 * 60 * 1000;
+    const LC_CACHE_KEY = 'amritanshu-lc-live-v1';
+    const LC_TTL_MS = 10 * 60 * 1000;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let dsaLoaded = false;
     let dsaLoading = false;
@@ -264,9 +266,18 @@ document.addEventListener('DOMContentLoaded', () => {
       return null;
     }
 
-    function gfgCacheSet(data) {
+    function lcCacheGet(allowStale = false) {
       try {
-        localStorage.setItem(GFG_CACHE_KEY, JSON.stringify({ t: Date.now(), d: data }));
+        const raw = JSON.parse(localStorage.getItem(LC_CACHE_KEY) || 'null');
+        if (!raw || !raw.d || !raw.d.solved) return null;
+        if (allowStale || Date.now() - raw.t < LC_TTL_MS) return raw.d;
+      } catch (cacheErr) { /* private mode etc. — fetch live instead */ }
+      return null;
+    }
+
+    function lcCacheSet(data) {
+      try {
+        localStorage.setItem(LC_CACHE_KEY, JSON.stringify({ t: Date.now(), d: data }));
       } catch (cacheErr) { /* storage unavailable — non-fatal */ }
     }
 
@@ -481,18 +492,40 @@ document.addEventListener('DOMContentLoaded', () => {
       // numbers just update in place when the new data lands.
 
       const lcPromise = needLc
-        ? Promise.all([
-            dsaFetch(LC_API).catch(() => null),
-            dsaFetch(LC_API + '/solved').catch(() => null),
-            dsaFetch(LC_API + '/contest').catch(() => null),
-          ])
-            .then(([profile, solved, contest]) => {
-              if (!solved) return false;
-              paintLcCard(profile, solved, contest, false);
+        ? (async () => {
+            const cached = lcCacheGet();
+            if (cached) {
+              paintLcCard(cached.profile, cached.solved, cached.contest, false);
               lcFetchedAt = Date.now();
               return true;
-            })
-            .catch(() => false)
+            }
+            try {
+              const [profile, solved, contest] = await Promise.all([
+                dsaFetch(LC_API).catch(() => null),
+                dsaFetch(LC_API + '/solved').catch(() => null),
+                dsaFetch(LC_API + '/contest').catch(() => null),
+              ]);
+              if (!solved) throw new Error('no solved data');
+              let finalContest = contest;
+              if (!finalContest) {
+                const stale = lcCacheGet(true);
+                if (stale && stale.contest) finalContest = stale.contest;
+              }
+              paintLcCard(profile, solved, finalContest, false);
+              lcCacheSet({ profile, solved, contest: finalContest });
+              lcFetchedAt = Date.now();
+              return true;
+            } catch (lcErr) {
+              const stale = lcCacheGet(true);
+              if (stale) {
+                paintLcCard(stale.profile, stale.solved, stale.contest, false);
+                lcFetchedAt = Date.now();
+                return true;
+              }
+              if (!dsaLoaded) paintLcCard(null, null, null, false);
+              return false;
+            }
+          })()
         : Promise.resolve(true);
 
       const gfgPromise = needGfg
