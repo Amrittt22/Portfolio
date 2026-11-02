@@ -19,7 +19,7 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="styles.css?v=20261101o" />
+    <link rel="stylesheet" href="styles.css?v=20261101p" />
   </head>
   <body>
     <!-- ============ ANIMATED CLOUD BACKDROP ============ -->
@@ -27,6 +27,22 @@
       <div class="cloud-layer cloud-layer-a"></div>
       <div class="cloud-layer cloud-layer-b"></div>
       <div class="cloud-vignette"></div>
+    </div>
+
+    <!-- ============ MOBILE MENU ============ -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <div class="mobile-menu-panel">
+        <nav class="mobile-menu-nav" aria-label="Mobile primary">
+          <a href="#work">Work</a>
+          <a href="#service">Service</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a href="#contact" class="btn-dark mobile-menu-cta">
+          <span>Let's Talk</span>
+          <span class="btn-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
     </div>
 
     <!-- ============ WINDOW CARD (the whole portfolio lives inside) ============ -->
@@ -53,7 +69,20 @@
               <span>Let's Talk</span>
               <span class="btn-arrow" aria-hidden="true">↗</span>
             </a>
-          </header>
+
+          <button
+            class="nav-hamburger"
+            id="navToggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobileMenu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </header>
 
           <div class="hero-name" aria-label="Amritanshu Singh">
             <span class="name-outlined">AMRITANSHU</span>
@@ -498,6 +527,6 @@
 
     <!-- CountUp.js — animated number counters for the live DSA stats panel -->
     <script defer src="https://cdn.jsdelivr.net/npm/countup.js@2.6.2/dist/countUp.umd.js"></script>
-    <script src="script.js?v=20261101o"></script>
+    <script src="script.js?v=20261101p"></script>
   </body>
 </html>

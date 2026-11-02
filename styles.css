@@ -139,6 +139,109 @@ a {
 }
 
 /* ============================================================
+   MOBILE MENU + HAMBURGER
+   ============================================================ */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 0;
+  z-index: 70;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  margin: 0 auto;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+}
+
+.nav-hamburger.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-hamburger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-hamburger.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(20, 20, 24, 0.45);
+  backdrop-filter: blur(2px);
+}
+
+.mobile-menu.is-open {
+  display: block;
+}
+
+.mobile-menu-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--paper);
+  padding: 84px var(--gutter) 28px;
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 24px 60px rgba(20, 20, 24, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  animation: mobile-menu-in 0.35s var(--ease) both;
+}
+
+@keyframes mobile-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-menu-nav a {
+  display: block;
+  padding: 14px 0;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--line);
+  transition: color 0.25s var(--ease), padding-left 0.25s var(--ease);
+}
+
+.mobile-menu-nav a:hover {
+  color: var(--ink);
+  padding-left: 6px;
+}
+
+.mobile-menu-nav a:last-child {
+  border-bottom: none;
+}
+
+.mobile-menu-cta {
+  margin-top: 14px;
+  justify-content: center;
+}
+
+/* ============================================================
    WINDOW CARD
    ============================================================ */
 .page-card {
@@ -1784,12 +1887,35 @@ button:focus-visible {
     justify-content: center;
   }
 
-  .contact-email {
-    word-break: break-all;
+  /* Project gallery becomes a swipeable carousel on small screens */
+  .project-shots {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 14px;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .project-shot {
+    flex: 0 0 86%;
+    scroll-snap-align: start;
+    min-width: 0;
   }
 }
 
-/* Reduced motion */
+/* Hamburger + mobile menu only on very small screens */
+@media (max-width: 600px) {
+  .nav-hamburger {
+    display: flex;
+  }
+
+  .site-nav .nav-links,
+  .site-nav .nav-talk-btn {
+    display: none;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
