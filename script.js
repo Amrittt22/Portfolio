@@ -151,23 +151,21 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
     window.scrollTo({ top: scrollYLock, behavior: 'instant' in window ? 'auto' : 'auto' });
   }
-  window.openProject = openProject;
-  window.closeProject = closeProject;
 
-  projectBackBtn.addEventListener('click', () => window.closeProject());
+  projectBackBtn.addEventListener('click', closeProject);
   projectPage.addEventListener('click', (e) => {
-    if (e.target === projectPage) window.closeProject();
+    if (e.target === projectPage) closeProject();
   });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && projectPage.classList.contains('is-open')) window.closeProject();
+    if (e.key === 'Escape' && projectPage.classList.contains('is-open')) closeProject();
   });
 
   workCards.forEach((card) => {
-    card.addEventListener('click', () => window.openProject(card.dataset.project));
+    card.addEventListener('click', () => openProject(card.dataset.project));
     card.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        window.openProject(card.dataset.project);
+        openProject(card.dataset.project);
       }
     });
     card.setAttribute('tabindex', '0');
@@ -697,271 +695,9 @@ document.addEventListener('DOMContentLoaded', () => {
   revealTargets.forEach((el) => io.observe(el));
 
   /* ==========================================================
-     08 · GSAP + LENIS ANIMATION LAYER
+     07 · PROJECT PAGE FOCUS SANITY
      ========================================================== */
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isTouchDevice = window.matchMedia('(hover: none)').matches || 'ontouchstart' in window;
-
-  // --- Lenis smooth scroll ---
-  let lenis = null;
-  if (!reduceMotion && window.Lenis) {
-    lenis = new window.Lenis({
-      duration: 1.15,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-    });
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-    if (window.ScrollTrigger) {
-      lenis.on('scroll', window.ScrollTrigger.update);
-      window.gsap.ticker.add((time) => lenis.raf(time * 1000));
-      window.gsap.ticker.lagSmoothing(0);
-    }
-  }
-
-  const gsap = window.gsap;
-  const ScrollTrigger = window.ScrollTrigger;
-
-  if (gsap && ScrollTrigger && !reduceMotion) {
-    gsap.registerPlugin(ScrollTrigger);
-
-    // --- GLOBAL: titles fade in + slide up 24px ---
-    gsap.utils.toArray('.section-heading').forEach((el) => {
-      gsap.fromTo(
-        el,
-        { opacity: 0, y: 24 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none none' },
-        }
-      );
-    });
-
-    // --- GLOBAL: ghost watermarks fade in + parallax ---
-    gsap.utils.toArray('.watermark').forEach((el) => {
-      gsap.fromTo(
-        el,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.2,
-          ease: 'power3.out',
-          scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' },
-        }
-      );
-      gsap.to(el, {
-        yPercent: -20,
-        ease: 'none',
-        scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true },
-      });
-    });
-
-    // --- HERO: staggered entrance ---
-    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.6 } });
-    heroTl
-      .from('.nav-status-pill, .nav-links a, .nav-talk-btn', { opacity: 0, y: 16, stagger: 0.1 })
-      .from('.name-outlined, .name-solid', { opacity: 0, y: 30, stagger: 0.1 }, '-=0.3')
-      .from('.hero-role, .hero-desc, .hero-cta', { opacity: 0, y: 20, stagger: 0.1 }, '-=0.3')
-      .from('.hero-socials .social-pill', { opacity: 0, y: 16, stagger: 0.1 }, '-=0.3')
-      .from('.hero-portrait', { opacity: 0, y: 60 }, '-=0.5');
-
-    // --- HERO: portrait parallax on scroll ---
-    gsap.to('.hero-portrait', {
-      y: -60,
-      ease: 'none',
-      scrollTrigger: { trigger: '.hero-section', start: 'top top', end: 'bottom top', scrub: true },
-    });
-
-    // --- SELECTED WORK: tabs + view-all fade in ---
-    gsap.from('.work-filters, .view-all-btn', {
-      opacity: 0,
-      y: 16,
-      duration: 0.6,
-      ease: 'power3.out',
-      scrollTrigger: { trigger: '.work-toolbar', start: 'top 85%' },
-    });
-
-    // --- SELECTED WORK: cards rise with fade + slight scale, staggered ---
-    gsap.from('.work-card', {
-      opacity: 0,
-      y: 40,
-      scale: 0.96,
-      duration: 0.8,
-      ease: 'power3.out',
-      stagger: 0.12,
-      scrollTrigger: { trigger: '.work-grid', start: 'top 80%' },
-    });
-
-    // --- SERVICES: rows slide in from left ---
-    gsap.from('.service-row', {
-      opacity: 0,
-      x: -40,
-      duration: 0.7,
-      ease: 'power3.out',
-      stagger: 0.12,
-      scrollTrigger: { trigger: '.service-list', start: 'top 80%' },
-    });
-
-    // --- EXPERIENCE: rows fade in one by one ---
-    gsap.from('.experience-row', {
-      opacity: 0,
-      y: 30,
-      duration: 0.7,
-      ease: 'power3.out',
-      stagger: 0.15,
-      scrollTrigger: { trigger: '.experience-list', start: 'top 80%' },
-    });
-
-    // --- FOOTER: headline, then status pill, CTA, socials stagger ---
-    const footerTl = gsap.timeline({
-      scrollTrigger: { trigger: '.contact-section', start: 'top 70%' },
-    });
-    footerTl
-      .from('.contact-heading', { opacity: 0, scale: 0.95, duration: 0.8, ease: 'power3.out' })
-      .from('.contact-desc', { opacity: 0, y: 16, duration: 0.6, ease: 'power3.out' }, '-=0.4')
-      .from('.contact-cta', { opacity: 0, y: 16, duration: 0.6, ease: 'power3.out' }, '-=0.3')
-      .from('.contact-email', { opacity: 0, y: 12, duration: 0.5, ease: 'power3.out' }, '-=0.3')
-      .from('.site-footer > *', { opacity: 0, y: 16, duration: 0.5, stagger: 0.1, ease: 'power3.out' }, '-=0.2');
-
-    // --- CASE STUDY: white fade transition on card click ---
-    const pageTransition = document.getElementById('pageTransition');
-    const projectPage = document.getElementById('projectPage');
-
-    // Wrap openProject/closeProject to drive the overlay
-    if (window.openProject) {
-      const origOpen = window.openProject;
-      window.openProject = function (key) {
-        if (pageTransition) {
-          pageTransition.classList.add('is-active');
-          setTimeout(() => {
-            origOpen(key);
-            // blur-to-sharp char reveal on title
-            const titleEl = document.getElementById('projectTitle');
-            if (titleEl && !titleEl.dataset.split) {
-              const text = titleEl.textContent;
-              titleEl.innerHTML = text
-                .split('')
-                .map((ch) => (ch === ' ' ? '&nbsp;' : `<span class="char">${ch}</span>`))
-                .join('');
-              titleEl.dataset.split = '1';
-            }
-            const chars = titleEl.querySelectorAll('.char');
-            gsap.fromTo(
-              chars,
-              { opacity: 0, filter: 'blur(12px)', y: 12 },
-              { opacity: 1, filter: 'blur(0px)', y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.03 }
-            );
-            // stagger-fade tags, desc, buttons, metadata
-            gsap.fromTo(
-              ['#projectTags', '#projectDesc', '#projectActions', '#projectFacts'].map((s) => document.querySelector(s)).filter(Boolean),
-              { opacity: 0, y: 20 },
-              { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.1, delay: 0.4 }
-            );
-            // browser mockup slides up
-            const shots = document.querySelector('.project-shots');
-            if (shots) {
-              gsap.fromTo(shots, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', delay: 0.6 });
-            }
-            requestAnimationFrame(() => {
-              pageTransition.classList.remove('is-active');
-            });
-          }, 350);
-        } else {
-          origOpen(key);
-        }
-      };
-    }
-
-    if (window.closeProject) {
-      const origClose = window.closeProject;
-      window.closeProject = function () {
-        if (pageTransition) {
-          pageTransition.classList.add('is-active');
-          setTimeout(() => {
-            origClose();
-            pageTransition.classList.remove('is-active');
-          }, 350);
-        } else {
-          origClose();
-        }
-      };
-    }
-
-    // --- Custom cursor badge for work cards ---
-    if (!isTouchDevice) {
-      const badge = document.createElement('div');
-      badge.className = 'work-cursor-badge';
-      badge.textContent = '↗';
-      document.body.appendChild(badge);
-
-      let badgeActive = false;
-      document.querySelectorAll('.work-card').forEach((card) => {
-        card.addEventListener('mouseenter', () => {
-          badgeActive = true;
-          badge.classList.add('is-active');
-        });
-        card.addEventListener('mouseleave', () => {
-          badgeActive = false;
-          badge.classList.remove('is-active');
-        });
-      });
-      document.addEventListener('mousemove', (e) => {
-        if (!badgeActive) return;
-        badge.style.left = e.clientX + 'px';
-        badge.style.top = e.clientY + 'px';
-      });
-    }
-
-    // --- Card hover image zoom to 1.05 ---
-    document.querySelectorAll('.work-card-media img').forEach((img) => {
-      img.style.transition = 'transform 0.6s cubic-bezier(0.16,1,0.3,1)';
-    });
-
-    // --- Cursor spotlight on portrait ---
-    const portrait = document.querySelector('.hero-portrait');
-    if (portrait && !isTouch) {
-      portrait.addEventListener('mousemove', (e) => {
-        const r = portrait.getBoundingClientRect();
-        const x = ((e.clientX - r.left) / r.width) * 100;
-        const y = ((e.clientY - r.top) / r.height) * 100;
-        portrait.style.setProperty('--mx', x + '%');
-        portrait.style.setProperty('--my', y + '%');
-      });
-    }
-
-    // --- Service row: preview follows cursor slightly ---
-    if (!isTouchDevice) {
-      document.querySelectorAll('.service-row').forEach((row) => {
-        const preview = row.querySelector('.service-preview');
-        if (!preview) return;
-        row.addEventListener('mousemove', (e) => {
-          if (!row.classList.contains('is-open')) return;
-          const r = row.getBoundingClientRect();
-          const x = (e.clientX - r.left) / r.width - 0.5;
-          preview.style.transform = `translateY(0) rotate(-8deg) translateX(${x * 18}px)`;
-        });
-        row.addEventListener('mouseleave', () => {
-          preview.style.transform = '';
-        });
-      });
-    }
-  }
-
-  // --- Case study: browser mockup parallax inside frame (subtle) ---
-  // (handled by CSS scroll-snap on mobile; desktop keeps grid)
-
   document.querySelectorAll('.project-shot img').forEach((img) => {
     img.addEventListener('load', () => img.classList.add('is-loaded'));
   });
-
-  /* ==========================================================
-     07 · PROJECT PAGE FOCUS SANITY (kept)
-     ========================================================== */
 });
