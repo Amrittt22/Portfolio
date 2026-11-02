@@ -627,26 +627,14 @@ document.addEventListener('DOMContentLoaded', () => {
     );
     if (!address) return;
 
-    let handled = false;
-    const markHandled = () => {
-      handled = true;
-    };
-    window.addEventListener('blur', markHandled, { once: true });
-    document.addEventListener('visibilitychange', markHandled, { once: true });
-
-    setTimeout(() => {
-      window.removeEventListener('blur', markHandled);
-      document.removeEventListener('visibilitychange', markHandled);
-      // If a mail app / webmail handler took over the window, do nothing.
-      if (handled || document.visibilityState !== 'visible') return;
-      // Otherwise (no mail handler), open a webmail composer so the click
-      // always results in a mail composer opening.
-      window.open(
-        'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(address),
-        '_blank',
-        'noopener'
-      );
-    }, 2000);
+    // Prevent the browser's "Open Outlook/mail app?" prompt and any blank
+    // tabs: handle the click ourselves and open a webmail composer directly.
+    event.preventDefault();
+    window.open(
+      'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(address),
+      '_blank',
+      'noopener'
+    );
   });
 
   /* ==========================================================
