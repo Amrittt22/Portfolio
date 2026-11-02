@@ -627,13 +627,6 @@ document.addEventListener('DOMContentLoaded', () => {
     );
     if (!address) return;
 
-    let newTab = null;
-    try {
-      newTab = window.open('about:blank', '_blank', 'noopener');
-    } catch (openErr) {
-      newTab = null;
-    }
-
     let handled = false;
     const markHandled = () => {
       handled = true;
@@ -644,27 +637,16 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       window.removeEventListener('blur', markHandled);
       document.removeEventListener('visibilitychange', markHandled);
-      if (handled || document.visibilityState !== 'visible') {
-        try {
-          if (newTab && !newTab.closed) newTab.close();
-        } catch (closeErr) {
-          /* already closed */
-        }
-        return;
-      }
-      const composeUrl =
-        'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(address);
-      try {
-        if (newTab && !newTab.closed) {
-          newTab.location.href = composeUrl;
-        } else {
-          const opened = window.open(composeUrl, '_blank', 'noopener');
-          if (!opened) window.location.href = composeUrl;
-        }
-      } catch (navErr) {
-        window.location.href = composeUrl;
-      }
-    }, 900);
+      // If a mail app / webmail handler took over the window, do nothing.
+      if (handled || document.visibilityState !== 'visible') return;
+      // Otherwise (no mail handler), open a webmail composer so the click
+      // always results in a mail composer opening.
+      window.open(
+        'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(address),
+        '_blank',
+        'noopener'
+      );
+    }, 2000);
   });
 
   /* ==========================================================
