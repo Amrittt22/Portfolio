@@ -178,6 +178,9 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================================== */
   const serviceRows = document.querySelectorAll('.service-row');
 
+  // On touch devices there is no hover — rows open on tap instead.
+  const isTouch = window.matchMedia('(hover: none)').matches || 'ontouchstart' in window;
+
   function openServiceRow(row) {
     serviceRows.forEach((other) => {
       if (other !== row) {
@@ -189,6 +192,11 @@ document.addEventListener('DOMContentLoaded', () => {
     row.classList.add('is-open');
     row.querySelector('.service-row-head').setAttribute('aria-expanded', 'true');
     row.querySelector('.service-arrow').textContent = '✕';
+
+    // Kick off the live DSA fetch when its row opens (covers mobile taps).
+    if (row.querySelector('#dsaLive')) {
+      try { loadDsaLive(); } catch (e) { /* not ready yet */ }
+    }
   }
 
   function closeServiceRow(row) {
@@ -198,8 +206,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   serviceRows.forEach((row) => {
-    row.addEventListener('mouseenter', () => openServiceRow(row));
-    row.addEventListener('mouseleave', () => closeServiceRow(row));
+    if (!isTouch) {
+      row.addEventListener('mouseenter', () => openServiceRow(row));
+      row.addEventListener('mouseleave', () => closeServiceRow(row));
+    }
 
     const head = row.querySelector('.service-row-head');
     head.addEventListener('click', () => {

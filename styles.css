@@ -139,45 +139,6 @@ a {
 }
 
 /* ============================================================
-   SMALL-SCREEN NOTICE
-   Desktop-only interactions (hover previews, cursor cards) do not
-   exist on phones, so point visitors at a larger screen.
-   ============================================================ */
-.screen-notice {
-  display: none;
-  align-items: flex-start;
-  gap: 10px;
-  width: min(560px, 92.5vw);
-  margin: clamp(16px, 4vw, 24px) auto 0;
-  padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 14px;
-  box-shadow: 0 10px 26px rgba(20, 20, 24, 0.14);
-  color: var(--ink-soft);
-  font-size: 0.79rem;
-  line-height: 1.55;
-  text-align: left;
-}
-
-.screen-notice svg {
-  flex: 0 0 auto;
-  width: 18px;
-  height: 18px;
-  margin-top: 1px;
-  color: var(--ink-mute);
-}
-
-.screen-notice p {
-  margin: 0;
-}
-
-.screen-notice strong {
-  font-weight: 600;
-  color: var(--ink);
-}
-
-/* ============================================================
    WINDOW CARD
    ============================================================ */
 .page-card {
@@ -1592,29 +1553,34 @@ button:focus-visible {
 }
 
 @media (max-width: 860px) {
-  .screen-notice {
-    display: flex;
-  }
-
   .page-card {
     margin-top: 16px;
   }
 
   .site-nav {
-    gap: 12px;
+    gap: 10px;
+    flex-wrap: wrap;
   }
 
   .nav-status-pill {
-    padding: 9px 12px;
-    font-size: 0.74rem;
+    padding: 8px 12px;
+    font-size: 0.72rem;
   }
 
   .nav-links {
-    gap: 14px;
+    gap: 12px;
+    order: 3;
+    width: 100%;
+    justify-content: center;
   }
 
   .nav-links a {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
+  }
+
+  .nav-talk-btn {
+    padding: 9px 16px;
+    font-size: 0.78rem;
   }
 
   .hero-name {
@@ -1691,6 +1657,135 @@ button:focus-visible {
 
   .fact-value {
     max-width: none;
+  }
+
+  /* ---------- Hero: stack name, tappable portrait ---------- */
+  .hero-name {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .name-outlined,
+  .name-solid {
+    white-space: nowrap;
+    font-size: clamp(1.9rem, 11vw, 3.6rem);
+  }
+
+  .hero-portrait {
+    position: static;
+    transform: none;
+    order: -1;
+    width: clamp(180px, 52vw, 280px);
+    margin: 0 auto -24px;
+  }
+
+  .hero-portrait:active img,
+  .hero-portrait:focus-within img {
+    filter: none;
+    transform: scale(1.015);
+  }
+
+  .hero-stage {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+    min-height: 0;
+    gap: 4px;
+  }
+
+  .hero-left {
+    margin-top: 20px;
+    max-width: 100%;
+  }
+
+  .hero-socials {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 20px 0 24px;
+  }
+
+  .hero-socials .social-pill {
+    margin-right: 0;
+  }
+
+  /* ---------- Service previews: inline on mobile ---------- */
+  .service-preview {
+    display: block;
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    top: auto;
+    right: auto;
+    margin: 14px 0 6px;
+    transform: none;
+    opacity: 0;
+    transition: opacity 0.4s var(--ease);
+    pointer-events: none;
+  }
+
+  .service-row.is-open .service-preview {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* DSA live panel becomes full-width and auto-height on mobile */
+  .service-preview-live,
+  #dsaLive[data-state="live"] {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 200px;
+    transform: none;
+  }
+
+  #dsaLive[data-state="live"] > img {
+    display: none;
+  }
+
+  .dsa-live-stack {
+    position: relative;
+    inset: auto;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  #dsaLive[data-state="live"] .dsa-live-stack {
+    display: flex;
+  }
+
+  .dsa-live-card {
+    width: 100%;
+    flex: none;
+  }
+
+  /* ---------- Experience: disable cursor float on touch ---------- */
+  .experience-float {
+    display: none !important;
+  }
+
+  /* ---------- Work toolbar ---------- */
+  .work-toolbar {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .work-filters {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .contact-email {
+    word-break: break-all;
   }
 }
 
